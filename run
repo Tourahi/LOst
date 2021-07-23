@@ -1,0 +1,7 @@
+#!/bin/bash
+
+moonc .
+./love/love .
+find ./src -type f -name '*.lua' -delete
+rm main.lua
+rm conf.lua
