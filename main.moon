@@ -1,35 +1,31 @@
 assert require 'src/globals'
-import insert from table
-import remove from table
-
-export currentRoom = nil
 
 with love
   .load = ->
     Graphics.setDefaultFilter 'nearest', 'nearest'
     Graphics.setLineStyle 'rough'
     objectFiles = {}
-    recEnumerate 'src/objects', objectFiles
-    requireFiles objectFiles
+    Utils.recEnumerate 'src/objects', objectFiles
+    Utils.requireFiles objectFiles
     roomFiles = {}
-    recEnumerate 'src/Rooms', roomFiles
-    requireFiles roomFiles
+    Utils.recEnumerate 'src/Rooms', roomFiles
+    Utils.requireFiles roomFiles
 
     export timer = Timer!
     export input = Input!
 
-    gotoRoom 'Stage'
+    Utils.room.gotoRoom 'Stage'
 
-    resize 2
+    Utils.resize 2
 
   .update = (dt) ->
     timer\update dt
-    if currentRoom
-      currentRoom\update dt
+    if G_currentRoom
+      G_currentRoom\update dt
 
   .draw = ->
-    if currentRoom
-      currentRoom\draw!
+    if G_currentRoom
+      G_currentRoom\draw!
 
   .run = ->
     if love.load
@@ -74,33 +70,4 @@ with love
 
       if love.timer
         love.timer.sleep(0.001)
-
-
-
-export resize = (s) ->
-  Window.setMode s*baseW, s*baseH
-  baseW = s*baseW
-  baseH = s*baseH
-  export sx, sy = s, s
-
-export recEnumerate = (folder, fileList)->
-  items = Filesystem.getDirectoryItems folder
-  for i, item in ipairs items
-    if item\find('.moon', 1, true) ~= nil
-      remove items, i
-  for _, item in ipairs items
-    file = folder .. "/" .. item
-    if Filesystem.getInfo(file).type == "file"
-      insert fileList, file
-    elseif Filesystem.getInfo(file).type == "directory"
-      recEnumerate file, fileList
-
-export requireFiles = (files) ->
-  for _,file in ipairs files
-    -- remove .lua
-    file = file\sub 1, -5
-    assert require file
-
-export gotoRoom = (roomType, ...) ->
-  currentRoom = _G[roomType](...)
 

@@ -18,7 +18,14 @@ assert require 'src/objects/Area'
 assert require 'src/GameObject'
 
 
+-- rooms
+export G_currentRoom = nil
+
+
 -- Utils
+
+export Utils = assert require 'src/Utils'
+
 
 export Uid = ->
   f = (x) ->

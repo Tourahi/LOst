@@ -16,11 +16,12 @@ export class Stage
     @area\update dt
 
   draw: =>
+    print "here"
     Graphics.setCanvas @mainCanvas
     Graphics.clear!
 
     @camera\attach 0, 0, baseW, baseH, 50
-    -- Graphics.circle 'line', baseW/2, baseH/2, 50
+    Graphics.circle 'line', baseW/2, baseH/2, 50
     @area\draw!
     @camera\detach!
 
