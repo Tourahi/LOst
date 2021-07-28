@@ -6,10 +6,8 @@ Utils.room = {}
 
 with Utils
   .resize = (s) ->
-    Window.setMode s*baseW, s*baseH
-    baseW = s*baseW
-    baseH = s*baseH
-    export sx, sy = s, s
+    Window.setMode s*G_baseW, s*G_baseH
+    export G_sx, G_sy = s, s
 
   .recEnumerate = (folder, fileList)->
     items = Filesystem.getDirectoryItems folder
@@ -30,7 +28,7 @@ with Utils
       assert require file
 
   .room.gotoRoom = (roomType, ...) ->
-    G_currentRoom = _G[roomType](...)
+    export G_currentRoom = _G[roomType](...)
 
 
 

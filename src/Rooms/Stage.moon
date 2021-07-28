@@ -1,27 +1,27 @@
 
 export class Stage
   new: =>
+    print "Stage"
     @area = Area!
     @area\addPhysicsWorld!
-    @mainCanvas = Graphics.newCanvas baseW, baseH
+    @mainCanvas = Graphics.newCanvas G_baseW, G_baseH
     @camera = Camera!
     input\bind 'f3',-> @camera\shake 4, 60, 1
-    @player = @area\addGameObject 'Player', baseW/2, baseH/2
+    @player = @area\addGameObject 'Player', G_baseW/2, G_baseH/2
     input\bind 'f4',-> @player.dead = true
 
   update: (dt) =>
     @camera.smoother = Camera.smooth.damped 5
-    @camera\lockPosition dt, baseW/2, baseH/2
+    @camera\lockPosition dt, G_baseW/2, G_baseH/2
     @camera\update dt
     @area\update dt
 
   draw: =>
-    print "here"
     Graphics.setCanvas @mainCanvas
     Graphics.clear!
 
-    @camera\attach 0, 0, baseW, baseH, 50
-    Graphics.circle 'line', baseW/2, baseH/2, 50
+    @camera\attach 0, 0, G_baseW, G_baseH, 50
+    Graphics.circle 'line', G_baseW/2, G_baseH/2, 50
     @area\draw!
     @camera\detach!
 
@@ -29,5 +29,5 @@ export class Stage
 
     Graphics.setColor 1, 1, 1, 1
     Graphics.setBlendMode 'alpha', 'premultiplied'
-    Graphics.draw @mainCanvas, 0, 0, 0, sx, sy
+    Graphics.draw @mainCanvas, 0, 0, 0, G_sx, G_sy
     Graphics.setBlendMode 'alpha'

@@ -1,8 +1,8 @@
 
-export baseW = 480
-export baseH = 270
-export sx = 1
-export sy = 1
+export G_baseW = 480
+export G_baseH = 270
+export G_sx = 1
+export G_sy = 1
 
 with love
   .conf = (t) ->
@@ -12,8 +12,8 @@ with love
 
     t.window.title = "LOst" -- The window title (string)
     t.window.icon = nil                -- Filepath to an image to use as the window's icon (string)
-    t.window.width = baseW -- The window width (number)
-    t.window.height = baseH -- The window height (number)
+    t.window.width = G_baseW -- The window width (number)
+    t.window.height = G_baseH -- The window height (number)
     t.window.borderless = false        -- Remove all border visuals from the window (boolean)
     t.window.resizable = true          -- Let the window be user-resizable (boolean)
     t.window.minwidth = 1              -- Minimum window width if the window is resizable (number)

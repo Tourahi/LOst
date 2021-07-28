@@ -16,7 +16,7 @@ with love
 
     Utils.room.gotoRoom 'Stage'
 
-    Utils.resize 2
+    Utils.resize 3
 
   .update = (dt) ->
     timer\update dt
