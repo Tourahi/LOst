@@ -6,7 +6,7 @@ export class Stage
     @area\addPhysicsWorld!
     @mainCanvas = Graphics.newCanvas G_baseW, G_baseH
     @camera = Camera!
-    input\bind 'f3',-> @camera\shake 4, 60, 1
+    input\bind 'f3',-> @camera\shake 4, 100, 10
     @player = @area\addGameObject 'Player', G_baseW/2, G_baseH/2
     input\bind 'f4',-> @player.dead = true
 

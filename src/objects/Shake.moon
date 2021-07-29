@@ -15,7 +15,7 @@ export class Shake
     @shaking = true
 
   update: (dt) =>
-    @t = love.timer.getTime()*1000 - @startTime
+    @t = (love.timer.getTime()*1000) - @startTime
     if @t > @dur
       @shaking = false
 
@@ -25,7 +25,7 @@ export class Shake
           return 0
         t = @t
 
-    s = (t/1000)*@freq
+    s = (t/1000) * @freq
     s0 = math.floor(s)
     s1 = s0 + 1
     k = @decay(t)
