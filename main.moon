@@ -33,7 +33,7 @@ with love
 
     -- We don't want the first frame's dt to include time taken by love.load.
     if love.timer
-      love.timer.step()
+      love.timer.step!
 
     dt = 0
     fixedDt = 1/60
@@ -42,32 +42,33 @@ with love
     return () ->
       -- Process events.
       if love.event
-        love.event.pump()
-        for name, a,b,c,d,e,f in love.event.poll()
+        love.event.pump!
+        for name, a,b,c,d,e,f in love.event.poll!
           if name == "quit"
-            if not love.quit or not love.quit()
+            if not love.quit or not love.quit!
               return a or 0
-          love.handlers[name](a,b,c,d,e,f)
+          love.handlers[name] a,b,c,d,e,f
 
       -- Update dt, as we'll be passing it to update
       if love.timer
-        dt = love.timer.step()
+        dt = love.timer.step!
       -- Call update and draw
       acc += dt
+      Log.info acc
       while acc >= fixedDt
         if love.update
-          love.update(fixedDt)  -- will pass 0 if love.timer is disabled
+          love.update fixedDt
         acc -= fixedDt
 
-      if love.graphics and love.graphics.isActive()
-        love.graphics.origin()
-        love.graphics.clear(love.graphics.getBackgroundColor())
+      if love.graphics and love.graphics.isActive!
+        love.graphics.origin!
+        love.graphics.clear love.graphics.getBackgroundColor!
 
         if love.draw
-          love.draw()
+          love.draw!
 
-        love.graphics.present()
+        love.graphics.present!
 
       if love.timer
-        love.timer.sleep(0.001)
+        love.timer.sleep 0.001
 

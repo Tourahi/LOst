@@ -1,7 +1,9 @@
 import random from love.math
 M = assert require 'moon'
-
+export Log = assert require 'libs/log/log'
 export Dump = M.p
+
+Dump Log
 
 export Graphics = love.graphics
 export Window = love.window

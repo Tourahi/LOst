@@ -1,7 +1,6 @@
 
 export class Stage
   new: =>
-    print "Stage"
     @area = Area!
     @area\addPhysicsWorld!
     @mainCanvas = Graphics.newCanvas G_baseW, G_baseH
@@ -9,12 +8,22 @@ export class Stage
     input\bind 'f3',-> @camera\shake 4, 100, 10
     @player = @area\addGameObject 'Player', G_baseW/2, G_baseH/2
     input\bind 'f4',-> @player.dead = true
+    -- INput debug
+    input\bind 'right',"right"
+    input\bind 'left',"left"
+    input\bind 'd',"print"
+
+
+
 
   update: (dt) =>
     @camera.smoother = Camera.smooth.damped 5
     @camera\lockPosition dt, G_baseW/2, G_baseH/2
     @camera\update dt
     @area\update dt
+
+    if input\sequence('right', 0.5, 'left', 0.5, 'print')
+      print "hello"
 
   draw: =>
     Graphics.setCanvas @mainCanvas
