@@ -1,18 +1,6 @@
 assert require 'src/globals'
 freqCounter = assert require 'src/freqCounter'
 
-love.clamp = (min, val, max) ->
-  math.max(min, math.min(val, max))
-  
-if not love.frametime
-  love.frametime =  1 / 60
-if not love.ticksPerSecond
-  love.ticksPerSecond = freqCounter!
-if not love.framesPerSecond
-  love.framesPerSecond =  freqCounter!
-if not love.interPolateRender 
-  love.interPolateRender = false 
-
 with love
   .load = ->
     Graphics.setDefaultFilter 'nearest', 'nearest'
@@ -36,9 +24,9 @@ with love
     if G_currentRoom
       G_currentRoom\update dt
 
-  .draw = (interp) ->
+  .draw = ->
     if G_currentRoom
-      G_currentRoom\draw interp
+      G_currentRoom\draw!
 
   .run = ->
     if love.load
@@ -49,8 +37,8 @@ with love
       love.timer.step!
 
     dt = 0
+    fixedDt = 1/60
     acc = 0
-    
     -- Main loop time.
     return () ->
       -- Process events.
@@ -65,40 +53,21 @@ with love
       -- Update dt, as we'll be passing it to update
       if love.timer
         dt = love.timer.step!
-
-      -- fuzzy timing snapping
-      for _, v in ipairs {1/2, 1, 2}
-        v = love.frametime * v
-        if math.abs(dt - v) < 0.002
-          dt = v
-
-      -- dt clamping
-      dt = love.clamp dt, 0, 2 * love.frametime
+      -- Call update and draw
       acc += dt
-      -- acc clamping
-      acc = love.clamp acc, 0, 8 * love.frametime
+      while acc >= fixedDt
+        if love.update
+          love.update fixedDt
+        acc -= fixedDt
 
-      ticked = false
-
-      -- run updates if ready
-      while acc > love.frametime
-        acc -= love.frametime
-        love.update love.frametime
-        love.ticksPerSecond\add!
-        ticked = true
-
-
-      if love.graphics and love.graphics.isActive! and (ticked or love.interPolateRender)
+      if love.graphics and love.graphics.isActive!
         love.graphics.origin!
         love.graphics.clear love.graphics.getBackgroundColor!
 
         if love.draw
-          love.draw(acc / love.frametime)
+          love.draw!
 
         love.graphics.present!
-        love.framesPerSecond\add!
-      
-      -- manual_gc(1e-3, 64, false)
 
       if love.timer
         love.timer.sleep 0.001
