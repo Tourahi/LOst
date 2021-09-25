@@ -18,5 +18,3 @@ export class GameObject
       @timer\update dt
 
   -- draw:
-
-
