@@ -54,7 +54,6 @@ with love
         dt = love.timer.step!
       -- Call update and draw
       acc += dt
-      Log.info acc
       while acc >= fixedDt
         if love.update
           love.update fixedDt
