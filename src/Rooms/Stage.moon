@@ -27,7 +27,8 @@ export class Stage
     if input\sequence('right', 0.5, 'left', 0.5, 'print')
       print "hello"
 
-  draw: =>
+  draw: (interp) =>
+    Log.info interp
     Graphics.setCanvas @mainCanvas
     Graphics.clear!
 
