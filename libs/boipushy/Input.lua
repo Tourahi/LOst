@@ -125,7 +125,6 @@ function Input:sequence(...)
             local delay = self.sequences[sequence_key].sequence[self.sequences[sequence_key].current_index]
 
             local action = self.sequences[sequence_key].sequence[self.sequences[sequence_key].current_index + 1]
-            Dump({delay=delay, action=action})
 
             
             if (love.timer.getTime() - self.sequences[sequence_key].last_pressed) > delay then self.sequences[sequence_key] = nil end

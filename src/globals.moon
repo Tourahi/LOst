@@ -41,3 +41,10 @@ export Uid = ->
 export Random = (min, max) ->
     min, max = min or 0, max or 1
     return (min > max and (love.math.random()*(min - max) + max)) or (love.math.random()*(max - min) + min)
+
+
+-- input bindings
+export input = Input!
+
+input\bind 'right',"right"
+input\bind 'left',"left"

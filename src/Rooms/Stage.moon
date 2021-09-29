@@ -9,8 +9,6 @@ export class Stage
     @player = @area\addGameObject 'Player', G_baseW/2, G_baseH/2
     input\bind 'f4',-> @player.dead = true
     -- INput debug
-    input\bind 'right',"right"
-    input\bind 'left',"left"
     input\bind 'd',"print"
 
     Log.debug @player.id

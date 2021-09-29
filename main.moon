@@ -13,7 +13,6 @@ with love
     Utils.requireFiles roomFiles
 
     export timer = Timer!
-    export input = Input!
 
     Utils.room.gotoRoom 'Stage'
 

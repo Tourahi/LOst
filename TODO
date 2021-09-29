@@ -2,4 +2,5 @@
 Game basics:
     [x] gameObject update and destroy. 
     [x] finish the Area class 
-    [] finish the Player class 
+    [x] finish the Player class 
+    [] add destroy to the Stage room
