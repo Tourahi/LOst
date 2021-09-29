@@ -1,3 +1,11 @@
+-- input bindings
+export Input = assert require 'libs/boipushy/Input'
+export input = Input!
+
+input\bind 'right',"right"
+input\bind 'left',"left"
+
+
 import random from love.math
 M = assert require 'moon'
 export Log = assert require 'libs/log/log'
@@ -12,7 +20,6 @@ export Filesystem = love.filesystem
 
 -- Game modules
 export Timer = assert require 'libs/EnhancedTimer/EnhancedTimer'
-export Input = assert require 'libs/boipushy/Input'
 export Camera = assert require 'libs/hump/camera'
 export Physics = assert require 'libs/windfield/windfield'
 
@@ -43,8 +50,3 @@ export Random = (min, max) ->
     return (min > max and (love.math.random()*(min - max) + max)) or (love.math.random()*(max - min) + min)
 
 
--- input bindings
-export input = Input!
-
-input\bind 'right',"right"
-input\bind 'left',"left"

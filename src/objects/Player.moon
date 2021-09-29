@@ -30,4 +30,4 @@ export class Player extends GameObject
     Graphics.line @x, @y, @x + 2*@w*math.cos(@r), @y + 2*@w*math.sin(@r)
 
   destroy: =>
-    @super\destroy self
+    super\destroy self

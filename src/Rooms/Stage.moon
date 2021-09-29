@@ -7,7 +7,8 @@ export class Stage
     @camera = Camera!
     input\bind 'f3',-> @camera\shake 10, 100, 10
     @player = @area\addGameObject 'Player', G_baseW/2, G_baseH/2
-    input\bind 'f4',-> @player.dead = true
+    input\bind 'f4', 'f4'
+
     -- INput debug
     input\bind 'd',"print"
 
@@ -19,6 +20,9 @@ export class Stage
     @camera\update dt
     @area\update dt
 
+    if input\down 'f4'
+      @player.dead = true
+      
     if input\sequence('right', 0.5, 'left', 0.5, 'print')
       print "hello"
 
@@ -36,3 +40,7 @@ export class Stage
     Graphics.setBlendMode 'alpha', 'premultiplied'
     Graphics.draw @mainCanvas, 0, 0, 0, G_sx, G_sy
     Graphics.setBlendMode 'alpha'
+
+  destroy: =>
+    @area\destroy!
+    @area = nil
