@@ -14,10 +14,7 @@ export class Stage
     input\bind 'd',"print"
 
     Log.debug @player.id
-
-
-
-
+    
   update: (dt) =>
     @camera.smoother = Camera.smooth.damped 5
     @camera\lockPosition dt, G_baseW/2, G_baseH/2
@@ -27,13 +24,11 @@ export class Stage
     if input\sequence('right', 0.5, 'left', 0.5, 'print')
       print "hello"
 
-  draw: (interp) =>
-    Log.info interp
+  draw: () =>
     Graphics.setCanvas @mainCanvas
     Graphics.clear!
 
     @camera\attach 0, 0, G_baseW, G_baseH, 50
-    Graphics.circle 'line', G_baseW/2, G_baseH/2, 50
     @area\draw!
     @camera\detach!
 

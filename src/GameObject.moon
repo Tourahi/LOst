@@ -12,9 +12,19 @@ export class GameObject
     @creationTime = getTime!
     @timer = Timer!
     @dead = false
+    @collider = nil
 
   update: (dt) =>
     if @timer
       @timer\update dt
+    if @collider
+      @x, @y = @collider\getPosition!
 
-  -- draw:
+  draw: =>
+
+  destroy: =>
+    @timer\destroy!
+    if @collider
+      @collider\destroy!
+    @collider = nil
+
