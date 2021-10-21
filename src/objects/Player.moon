@@ -26,6 +26,7 @@ export class Player extends GameObject
     @collider\setLinearVelocity @v*math.cos(@r), @v*math.sin(@r)
 
   draw: =>
+
     Graphics.circle 'line', @x, @y, @w
     Graphics.line @x, @y, @x + @w*math.cos(@r), @y + @w*math.sin(@r)
 
@@ -34,6 +35,8 @@ export class Player extends GameObject
     d = 1.2*@w
     @area\addGameObject 'ShootEff', @x + 1.2*@w*math.cos(@r),
       @y + 1.2*@w*math.sin(@r), {player: self, d: d}
+    @area\addGameObject 'Projectile', @x + 1.5*@w*math.cos(@r),
+      @y + 1.5*@w*math.sin(@r), {r: @r}
     
  
   destroy: =>

@@ -16,3 +16,6 @@ export class ShootEff extends GameObject
     Graphics.setColor Colors.white
     Graphics.rectangle 'fill', @x - @w/2, @y - @w/2, @w, @w
     Graphics.pop!
+
+  destroy: =>
+    super\destroy self
