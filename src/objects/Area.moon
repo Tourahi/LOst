@@ -11,7 +11,8 @@ export class Area
       @world\update dt
     for i = #@gameObjects, 1, -1
       gameObject = @gameObjects[i]
-      gameObject\update dt
+      with gameObject
+        \update dt
       if gameObject.dead
         gameObject\destroy!
         remove @gameObjects, i

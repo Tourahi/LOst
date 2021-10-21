@@ -13,10 +13,10 @@ export class Player extends GameObject
     @v = 0
     @maxV = 100
     @a = 100
+    @timer\every 0.24, -> @shoot!
 
   update: (dt) =>
-    super self, dt
-
+    super dt
     if input\down 'left'
       @r = @r - @rv*dt
     if input\down 'right'
@@ -29,5 +29,9 @@ export class Player extends GameObject
     Graphics.circle 'line', @x, @y, @w
     Graphics.line @x, @y, @x + 2*@w*math.cos(@r), @y + 2*@w*math.sin(@r)
 
+ 
+  shoot: =>
+    print 'shut'
+ 
   destroy: =>
     super\destroy self
