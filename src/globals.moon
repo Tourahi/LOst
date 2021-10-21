@@ -1,9 +1,10 @@
 -- input bindings
-export Input = assert require 'libs/boipushy/Input'
+export Input = assert require 'src/libs/Input'
+assert require 'src/libs/Colors'
 export input = Input!
 
-input\bind 'right',"right"
-input\bind 'left',"left"
+input\bind 'right','right'
+input\bind 'left','left'
 
 
 import random from love.math

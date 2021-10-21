@@ -27,11 +27,14 @@ export class Player extends GameObject
 
   draw: =>
     Graphics.circle 'line', @x, @y, @w
-    Graphics.line @x, @y, @x + 2*@w*math.cos(@r), @y + 2*@w*math.sin(@r)
+    Graphics.line @x, @y, @x + @w*math.cos(@r), @y + @w*math.sin(@r)
 
  
   shoot: =>
-    print 'shut'
+    d = 1.2*@w
+    @area\addGameObject 'ShootEff', @x + 1.2*@w*math.cos(@r),
+      @y + 1.2*@w*math.sin(@r), {player: self, d: d}
+    
  
   destroy: =>
     super\destroy self

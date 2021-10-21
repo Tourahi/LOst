@@ -30,6 +30,23 @@ with Utils
   .room.gotoRoom = (roomType, ...) ->
     export G_currentRoom = _G[roomType](...)
 
+  .pushRotate = (x, y, r) ->
+    with Graphics
+      .push!
+      .translate x, y
+      .rotate r or 0
+      .translate -x, -y
+
+  .pushRotateScale = (x, y, r, sx, sy) ->
+    with Graphics
+      .push!
+      .translate x, y
+      .rotate r or 0
+      .scale sx or 1, sy or sx or 1
+      .translate -x, -y  
+    
+
+
 
 
 Utils
