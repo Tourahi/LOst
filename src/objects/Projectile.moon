@@ -25,7 +25,7 @@ export class Projectile extends GameObject
 
   die: =>
     @dead = true
-    -- @area\addGameObject 
+    @area\addGameObject 'ProjectileDE', @x, @y, {color: @color or Colors.white, w: 3*@s}
 
   destroy: =>
     super\destroy self
