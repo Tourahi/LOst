@@ -3,8 +3,10 @@ export Input = assert require 'src/libs/Input'
 assert require 'src/libs/Colors'
 export input = Input!
 
-input\bind 'right','right'
-input\bind 'left','left'
+input\bindArr {
+  'right': 'right'
+  'left': 'left'
+  }
 
 
 import random from love.math

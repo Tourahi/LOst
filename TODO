@@ -1,6 +1,6 @@
 
 Tools Update:
-    [] Make the input class so it can accespt mutiple binds at a time
-    [] Instead of using lua math module use love.math
+    [x] Make the input class so it can accespt mutiple binds at a time
+    [x] Instead of using lua math module use love.math
     [] Test to make sure that every object calls the destroy method
     [] Update the Colors module

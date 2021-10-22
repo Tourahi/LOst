@@ -41,7 +41,7 @@ export class Player extends GameObject
 
   die: =>
     @dead = true
-    for i = 1, love.math.random(8, 12) do @area\addGameObject 'PlayerExplode', @x, @y
+    for i = 1, love.math.random(8, 15) do @area\addGameObject 'PlayerExplode', @x, @y
  
   destroy: =>
     super\destroy self

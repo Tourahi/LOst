@@ -77,6 +77,11 @@ class Input
 
     insert @binds[action], key
 
+  bindArr: (bs = nil) =>
+    if bs == nil then return
+    for k, a in pairs bs
+      @bind k, a
+
   pressed: (action) =>
     if action
       for _, key in ipairs @binds[action]
