@@ -1,12 +1,14 @@
 -- input bindings
 export Input = assert require 'src/libs/Input'
+export Leak = assert require 'src/libs/Leak'
 assert require 'src/libs/Colors'
 export input = Input!
 
 input\bindArr {
   'right': 'right'
   'left': 'left'
-  }
+  'f2': 'f2'
+}
 
 
 import random from love.math

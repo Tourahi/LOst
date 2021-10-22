@@ -2,5 +2,6 @@
 Tools Update:
     [x] Make the input class so it can accespt mutiple binds at a time
     [x] Instead of using lua math module use love.math
-    [] Test to make sure that every object calls the destroy method
+    [x] Test to make sure that every object calls the destroy method
+        - It considers moon classes "Unknown" objects
     [] Update the Colors module

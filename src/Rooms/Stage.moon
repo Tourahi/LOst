@@ -22,6 +22,8 @@ export class Stage
 
     if input\down 'f4'
       @player\die!
+    if input\down 'f2'
+      Leak.report!
       
     if input\sequence('right', 0.5, 'left', 0.5, 'print')
       print "hello"
