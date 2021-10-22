@@ -38,6 +38,10 @@ export class Player extends GameObject
     @area\addGameObject 'Projectile', @x + 1.5*@w*math.cos(@r),
       @y + 1.5*@w*math.sin(@r), {r: @r}
     
+
+  die: =>
+    @dead = true
+    for i = 1, love.math.random(8, 12) do @area\addGameObject 'PlayerExplode', @x, @y
  
   destroy: =>
     super\destroy self

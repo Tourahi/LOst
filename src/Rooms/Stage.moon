@@ -21,7 +21,7 @@ export class Stage
     @area\update dt
 
     if input\down 'f4'
-      @player.dead = true
+      @player\die!
       
     if input\sequence('right', 0.5, 'left', 0.5, 'print')
       print "hello"
