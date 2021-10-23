@@ -54,5 +54,6 @@ export Random = (min, max) ->
     return (min > max and (love.math.random()*(min - max) + max)) or (love.math.random()*(max - min) + min)
 
 
--- Love
+-- Love vars
 love.slow = 1 -- secs
+love.flash = nil

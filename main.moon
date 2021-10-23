@@ -5,6 +5,7 @@ with love
   .load = ->
     Graphics.setDefaultFilter 'nearest', 'nearest'
     Graphics.setLineStyle 'rough'
+    Graphics.setBackgroundColor Colors.customDim
     objectFiles = {}
     Utils.recEnumerate 'src/objects', objectFiles
     Utils.requireFiles objectFiles
@@ -24,8 +25,8 @@ with love
       G_currentRoom\update dt * love.slow
 
   .draw = ->
-    if G_currentRoom
-      G_currentRoom\draw!
+    if G_currentRoom then G_currentRoom\draw!
+    Utils.drawFlash!
 
   .run = ->
     if love.load

@@ -45,14 +45,20 @@ with Utils
       .scale sx or 1, sy or sx or 1
       .translate -x, -y  
 
-
   .slowDt = (amount = 1, dur = 0) ->
     love.slow = amount
     Gtimer\tween 'slow', dur, love, {slow: 1}, 'in-out-cubic'
 
-    
-    
-
+  .screenFlash = (n) ->
+    love.flash = n  
+  
+  .drawFlash = ->
+    if love.flash
+      love.flash -= 1
+      if love.flash == -1 then love.flash = nil
+    if love.flash
+      Graphics.setColor Colors.white
+      Graphics.rectangle 'fill', 0, 0, G_sx * G_baseW, G_sy * G_baseH
 
 
 

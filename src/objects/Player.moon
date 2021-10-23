@@ -40,6 +40,7 @@ export class Player extends GameObject
 
   die: =>
     @dead = true
+    Utils.screenFlash 3
     Utils.slowDt 0.2, 1
     with @area\getCamera!
       \shake 4, 40, 0.4
