@@ -13,7 +13,10 @@ export class Player extends GameObject
     @v = 0
     @maxV = 100
     @a = 100
+
+    -- Timers
     @timer\every 0.24, -> @shoot!
+    @timer\every 5, -> @glitch!
 
   update: (dt) =>
     super dt
@@ -40,11 +43,16 @@ export class Player extends GameObject
 
   die: =>
     @dead = true
-    Utils.screenFlash 3
+    if opts.flashEnabled
+      Utils.screenFlash 3
     Utils.slowDt 0.2, 1
     with @area\getCamera!
       \shake 4, 40, 0.4
     for i = 1, love.math.random(8, 10) do @area\addGameObject 'PlayerExplode', @x, @y
+
  
+  glitch: =>
+    @area\addGameObject 'TickEff', @x, @y, {parent: self}
+
   destroy: =>
-    super\destroy self
+    super self

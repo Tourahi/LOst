@@ -18,4 +18,4 @@ export class ShootEff extends GameObject
     Graphics.pop!
 
   destroy: =>
-    super\destroy self
+    super self

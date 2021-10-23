@@ -26,4 +26,4 @@ export class PlayerExplode extends GameObject
       .pop!
 
   destroy: =>
-    super\destroy self
+    super self
