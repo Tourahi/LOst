@@ -1,7 +1,7 @@
 
 export class Stage
   new: =>
-    @area = Area!
+    @area = Area self
     @area\addPhysicsWorld!
     @mainCanvas = Graphics.newCanvas G_baseW, G_baseH
     @camera = Camera!

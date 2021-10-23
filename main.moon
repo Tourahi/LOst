@@ -19,9 +19,9 @@ with love
     Utils.resize 3
 
   .update = (dt) ->
-    timer\update dt
+    timer\update dt * love.slow
     if G_currentRoom
-      G_currentRoom\update dt
+      G_currentRoom\update dt * love.slow
 
   .draw = ->
     if G_currentRoom

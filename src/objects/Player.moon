@@ -26,7 +26,6 @@ export class Player extends GameObject
     @collider\setLinearVelocity @v*math.cos(@r), @v*math.sin(@r)
 
   draw: =>
-
     Graphics.circle 'line', @x, @y, @w
     Graphics.line @x, @y, @x + @w*math.cos(@r), @y + @w*math.sin(@r)
 
@@ -41,7 +40,10 @@ export class Player extends GameObject
 
   die: =>
     @dead = true
-    for i = 1, love.math.random(8, 15) do @area\addGameObject 'PlayerExplode', @x, @y
+    Utils.slowDt 0.2, 1
+    with @area\getCamera!
+      \shake 4, 40, 0.4
+    for i = 1, love.math.random(8, 10) do @area\addGameObject 'PlayerExplode', @x, @y
  
   destroy: =>
     super\destroy self

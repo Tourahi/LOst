@@ -37,9 +37,8 @@ export G_currentRoom = nil
 
 
 -- Utils
-
 export Utils = assert require 'src/Utils'
-
+export Gtimer = Timer!
 
 export Uid = ->
   f = (x) ->
@@ -55,3 +54,5 @@ export Random = (min, max) ->
     return (min > max and (love.math.random()*(min - max) + max)) or (love.math.random()*(max - min) + min)
 
 
+-- Love
+love.slow = 1 -- secs

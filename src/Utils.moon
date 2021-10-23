@@ -44,6 +44,13 @@ with Utils
       .rotate r or 0
       .scale sx or 1, sy or sx or 1
       .translate -x, -y  
+
+
+  .slowDt = (amount = 1, dur = 0) ->
+    love.slow = amount
+    Gtimer\tween 'slow', dur, love, {slow: 1}, 'in-out-cubic'
+
+    
     
 
 

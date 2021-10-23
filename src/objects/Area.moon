@@ -7,6 +7,8 @@ export class Area
     @gameObjects = {}
 
   update: (dt) =>
+    if Gtimer
+      Gtimer\update dt
     if @world
       @world\update dt
     for i = #@gameObjects, 1, -1
@@ -26,6 +28,9 @@ export class Area
     gameObject = _G[gameObjectType](self, x, y, opts)
     insert @gameObjects, gameObject
     gameObject
+
+  getCamera: =>
+    @room.camera
 
   addPhysicsWorld: =>
     @world = Physics.newWorld 0, 0, true
