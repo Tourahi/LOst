@@ -1,5 +1,3 @@
-
-
 export class freqCounter
 	new: (sampleP = 1) =>
 		@sampleP = sampleP

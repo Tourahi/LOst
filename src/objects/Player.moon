@@ -1,3 +1,4 @@
+random = love.math.random
 
 export class Player extends GameObject
   new: (area, x, y, opts = {}) =>
@@ -16,7 +17,12 @@ export class Player extends GameObject
 
     -- Timers
     @timer\every 0.24, -> @shoot!
-    @timer\every 5, -> @glitch!
+    if opts.glitchEnabled
+      @timer\every 5, -> @glitch!
+
+    -- Temp vars
+    @burnColor = Colors.aqua
+    @tailBurn!
 
   update: (dt) =>
     super dt
@@ -54,5 +60,11 @@ export class Player extends GameObject
   glitch: =>
     @area\addGameObject 'TickEff', @x, @y, {parent: self}
 
+  tailBurn: =>
+    @timer\every 0.01, ->
+      @area\addGameObject 'TailBurn',
+        @x - 0.9*@w*math.cos(@r) + 0.2*@w*math.cos(@r - math.pi/2),
+        @y - 0.9*@w*math.sin(@r) + 0.2*@w*math.sin(@r - math.pi/2),
+        {parent: self, r: random(2, 4), d: Random(0.15, 0.25), color: @burnColor}
   destroy: =>
     super self

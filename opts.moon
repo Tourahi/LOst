@@ -6,4 +6,6 @@ export G_sy = 1
 -- Ingame flags && options
 export opts = {}
 
-opts.flashEnabled = true
+with opts
+  .flashEnabled = true
+  .glitchEnabled = false
