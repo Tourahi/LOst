@@ -1,4 +1,5 @@
 random = love.math.random
+Ship = assert require 'src/objects/Ship'
 
 export class Player extends GameObject
   new: (area, x, y, opts = {}) =>
@@ -8,24 +9,34 @@ export class Player extends GameObject
     @collider = area.world\newCircleCollider @x, @y, @w
     @collider\setObject self
 
+    @ship = Ship.Fighter!
     -- Movement related properties
     @r = -math.pi / 2
-    @rv = 1.66*math.pi
+    @rv = @ship.rv
     @v = 0
-    @maxV = 100
-    @a = 100
+    @maxV = @ship.baseV
+    @a = @ship.a
+    @boosting = 0
 
     -- Timers
     @timer\every 0.24, -> @shoot!
     if opts.glitchEnabled
       @timer\every 5, -> @glitch!
 
-    -- Temp vars
-    @burnColor = Colors.aqua
     @tailBurn!
 
   update: (dt) =>
     super dt
+    @boosting = 0
+    @maxV = @ship.baseV
+    if input\down 'up'
+      @boosting = 1
+      @maxV = @ship.boost*@ship.baseV
+    if input\down 'down' 
+      @boosting = -1
+      @maxV = @ship.slow*@ship.baseV
+
+
     if input\down 'left'
       @r = @r - @rv*dt
     if input\down 'right'
@@ -34,9 +45,20 @@ export class Player extends GameObject
     @v = math.min @v + @a*dt, @maxV
     @collider\setLinearVelocity @v*math.cos(@r), @v*math.sin(@r)
 
+    switch @boosting
+      when 1
+        @ship.burnColor = @ship.boostColor
+      when -1
+        @ship.burnColor = @ship.slowColor
+      when 0
+        @ship.burnColor = @ship.idleColor
+
+
+
+
   draw: =>
     Graphics.circle 'line', @x, @y, @w
-    Graphics.line @x, @y, @x + @w*math.cos(@r), @y + @w*math.sin(@r)
+    --Graphics.line @x, @y, @x + @w*math.cos(@r), @y + @w*math.sin(@r)
 
  
   shoot: =>
@@ -65,6 +87,8 @@ export class Player extends GameObject
       @area\addGameObject 'TailBurn',
         @x - 0.9*@w*math.cos(@r) + 0.2*@w*math.cos(@r - math.pi/2),
         @y - 0.9*@w*math.sin(@r) + 0.2*@w*math.sin(@r - math.pi/2),
-        {parent: self, r: random(2, 4), d: Random(0.15, 0.25), color: @burnColor}
+        {parent: self, r: random(2, 4), d: Random(0.15, 0.25), color: @ship.burnColor}
+  
+  
   destroy: =>
     super self

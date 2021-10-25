@@ -7,6 +7,8 @@ export input = Input!
 input\bindArr {
   'right': 'right'
   'left': 'left'
+  'up': 'up'
+  'down': 'down'
   'f2': 'f2'
 }
 

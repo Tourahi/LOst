@@ -4,4 +4,4 @@ Tools Update:
     [x] Instead of using lua math module use love.math
     [x] Test to make sure that every object calls the destroy method
         - It considers moon classes "Unknown" objects
-    [] Update the Colors module
+    [x] Update the Colors module --> Tint
