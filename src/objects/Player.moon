@@ -84,11 +84,7 @@ export class Player extends GameObject
 
   tailBurn: =>
     @timer\every 0.01, ->
-      @area\addGameObject 'TailBurn',
-        @x - 0.9*@w*math.cos(@r) + 0.2*@w*math.cos(@r - math.pi/2),
-        @y - 0.9*@w*math.sin(@r) + 0.2*@w*math.sin(@r - math.pi/2),
-        {parent: self, r: random(2, 4), d: Random(0.15, 0.25), color: @ship.burnColor}
-  
-  
+      @ship.burn self
+
   destroy: =>
     super self
