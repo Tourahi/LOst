@@ -5,7 +5,7 @@ export class Player extends GameObject
   new: (area, x, y, opts = {}) =>
     super area, x, y, opts
     @ship = Ship.Needle!
-    @polys = @ship\polys!
+    @polygons = @ship\polys!
 
     @x, @y = x, y
     @w, @h = @ship.w, @ship.h
@@ -20,6 +20,10 @@ export class Player extends GameObject
     @a = @ship.a
     @boosting = 0
 
+    @bBar = @area\getRoom!.GUI.bBar
+    @bBar\setColor @ship.boostColor
+
+
     -- Timers
     @timer\every 0.24, -> @shoot!
     if opts.glitchEnabled
@@ -33,6 +37,7 @@ export class Player extends GameObject
     @maxV = @ship.baseV
     if input\down 'up'
       @boosting = 1
+      @bBar\setValue @bBar.value - (@bBar.value * 0.001)
       @maxV = @ship.boost*@ship.baseV
     if input\down 'down' 
       @boosting = -1
@@ -60,7 +65,7 @@ export class Player extends GameObject
 
   draw: =>
     Utils.pushRotate @x, @y, @r
-    for _, poly in ipairs @polys
+    for _, poly in ipairs @polygons
       points = fn.map(poly, (v, k) ->
         if k % 2 == 1
           return @x + v

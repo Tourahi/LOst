@@ -22,7 +22,7 @@ class Ship
       idleColor: Colors.aqua
       burnColor: Colors.aqua
       boostColor: Tint\darken(0.099, Tint\hue(0.800, Colors.aqua))
-      slowColor: Tint\lighten 0.2, Colors.aqua
+      slowColor: Colors.white
       boost: 1.5
       slow: 0.5
       burn: (player) ->

@@ -1,5 +1,6 @@
 assert require 'src/globals'
 freqCounter = assert require 'src/freqCounter'
+MManager = MeowC.core.Manager
 
 with love
   .load = ->
@@ -20,6 +21,7 @@ with love
     Utils.resize 3
 
   .update = (dt) ->
+    if input\down 'escape' then love.event.quit!
     timer\update dt * love.slow
     if G_currentRoom
       G_currentRoom\update dt * love.slow

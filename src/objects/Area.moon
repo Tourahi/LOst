@@ -1,5 +1,6 @@
 import remove from table
 import insert from table
+Manager = MeowC.core.Manager
 
 export class Area
   new: ( room ) =>
@@ -29,8 +30,12 @@ export class Area
     insert @gameObjects, gameObject
     gameObject
 
+
   getCamera: =>
     @room.camera
+  
+  getRoom: =>
+    @room
 
   addPhysicsWorld: =>
     @world = Physics.newWorld 0, 0, true

@@ -11,6 +11,8 @@ input\bindArr {
   'up': 'up'
   'down': 'down'
   'f2': 'f2'
+  'f4': 'f4'
+  'escape': 'escape'
 }
 
 
@@ -32,6 +34,7 @@ export Timer = assert require 'libs/EnhancedTimer/EnhancedTimer'
 export Camera = assert require 'libs/hump/camera'
 export Physics = assert require 'libs/windfield/windfield'
 export fn = assert require 'libs/Moses/moses'
+assert require 'libs/MeowCore'
 
 assert require 'src/objects/Area'
 assert require 'src/GameObject'

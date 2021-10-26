@@ -5,3 +5,8 @@ Tools Update:
     [x] Test to make sure that every object calls the destroy method
         - It considers moon classes "Unknown" objects
     [x] Update the Colors module --> Tint
+    [] Bebop :
+        - small ship that will follow the player an shoot.
+        - 
+    [] Dashboard :
+        [x] boost bar
