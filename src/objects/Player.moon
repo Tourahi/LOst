@@ -4,12 +4,14 @@ Ship = assert require 'src/objects/Ship'
 export class Player extends GameObject
   new: (area, x, y, opts = {}) =>
     super area, x, y, opts
+    @ship = Ship.Needle!
+    @polys = @ship\polys!
+
     @x, @y = x, y
-    @w, @h = 12, 12
+    @w, @h = @ship.w, @ship.h
     @collider = area.world\newCircleCollider @x, @y, @w
     @collider\setObject self
 
-    @ship = Ship.Fighter!
     -- Movement related properties
     @r = -math.pi / 2
     @rv = @ship.rv
@@ -57,7 +59,19 @@ export class Player extends GameObject
 
 
   draw: =>
-    Graphics.circle 'line', @x, @y, @w
+    Utils.pushRotate @x, @y, @r
+    for _, poly in ipairs @polys
+      points = fn.map(poly, (v, k) ->
+        if k % 2 == 1
+          return @x + v
+        else
+          return @y + v
+      )
+      Graphics.polygon 'line', points
+
+    Graphics.pop!
+
+    --Graphics.circle 'line', @x, @y, @w
     --Graphics.line @x, @y, @x + @w*math.cos(@r), @y + @w*math.sin(@r)
 
  

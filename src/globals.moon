@@ -1,5 +1,6 @@
 -- input bindings
 export Input = assert require 'src/libs/Input'
+export Tint = assert require 'src/libs/Tint'
 export Leak = assert require 'src/libs/Leak'
 assert require 'src/libs/Colors'
 export input = Input!
@@ -11,6 +12,7 @@ input\bindArr {
   'down': 'down'
   'f2': 'f2'
 }
+
 
 
 import random from love.math
@@ -29,6 +31,7 @@ export Filesystem = love.filesystem
 export Timer = assert require 'libs/EnhancedTimer/EnhancedTimer'
 export Camera = assert require 'libs/hump/camera'
 export Physics = assert require 'libs/windfield/windfield'
+export fn = assert require 'libs/Moses/moses'
 
 assert require 'src/objects/Area'
 assert require 'src/GameObject'

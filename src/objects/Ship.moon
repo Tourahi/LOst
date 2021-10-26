@@ -2,25 +2,33 @@ random = love.math.random
 
 class Ship
 
-  @Fighter: ->
+  @Needle: ->
     return {
       name: 'Fighter'
       baseV: 100
       a: 100
-      rv: 1.66*math.pi
-      polys: {
-        
-      }
+      rv: 2.10*math.pi
+      w: 12
+      h: 12
+      polys: =>
+        {
+          { -- Center Poly
+            @w, 0
+            -@w/2, -@h/3
+            -@w, 0
+            -@w/2, @h/3
+          }
+        }
       idleColor: Colors.aqua
       burnColor: Colors.aqua
-      boostColor: Colors.crimson
-      slowColor: Colors.lightsteelblue
+      boostColor: Tint\darken(0.099, Tint\hue(0.800, Colors.aqua))
+      slowColor: Tint\lighten 0.2, Colors.aqua
       boost: 1.5
       slow: 0.5
       burn: (player) ->
         player.area\addGameObject 'TailBurn',
-          player.x - 0.9*player.w*math.cos(player.r) + 0.2*player.w*math.cos(player.r - math.pi/2),
-          player.y - 0.9*player.w*math.sin(player.r) + 0.2*player.w*math.sin(player.r - math.pi/2),
+          player.x - player.w*math.cos(player.r) + 0.2*player.w*math.cos(player.r - math.pi/0.98),
+          player.y - 0.9*player.w*math.sin(player.r) + 0.2*player.w*math.sin(player.r - math.pi/0.98),
           {parent: self, r: random(2, 4), d: Random(0.15, 0.25), color: player.ship.burnColor}
 
     }
