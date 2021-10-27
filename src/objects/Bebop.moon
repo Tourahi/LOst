@@ -6,6 +6,8 @@ export class Bebop extends GameObject
     @w, @h = 6, 6
     @collider = area.world\newCircleCollider @x, @y, @w
     @collider\setObject self
+    @collider\setPreSolve (c1, c2, contact)->
+      contact\setEnabled false
     @polygons = {
       {      
         @w, 0
