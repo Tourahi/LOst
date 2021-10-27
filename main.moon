@@ -18,7 +18,7 @@ with love
 
     Utils.room.gotoRoom 'Stage'
 
-    Utils.resize 3
+    Utils.resize opts.gameScale
 
   .update = (dt) ->
     if input\down 'escape' then love.event.quit!

@@ -9,3 +9,4 @@ export opts = {}
 with opts
   .flashEnabled = true
   .glitchEnabled = false
+  .gameScale = 3

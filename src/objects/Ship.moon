@@ -4,7 +4,7 @@ class Ship
 
   @Needle: ->
     return {
-      name: 'Fighter'
+      name: 'Needle'
       baseV: 100
       a: 100
       rv: 2.10*math.pi

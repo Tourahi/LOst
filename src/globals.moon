@@ -61,6 +61,11 @@ export Random = (min, max) ->
     min, max = min or 0, max or 1
     return (min > max and (love.math.random()*(min - max) + max)) or (love.math.random()*(max - min) + min)
 
+love.math.clamp = (val, min, max) ->
+  assert val and min and max, "Please provide all the parameters. [love.math.clamp]"
+  if min > max then min, max = max, min
+  math.max min, math.min(max, val)
+
 
 -- Love vars
 love.slow = 1 -- secs

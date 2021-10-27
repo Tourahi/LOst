@@ -3,8 +3,14 @@ import insert from table
 Manager = MeowC.core.Manager
 
 export class Area
-  new: ( room ) =>
+  new: (room, GUI) =>
     @room = room
+    @GUI = GUI
+
+    root = Manager\getInstanceRoot!
+    for k,widget in pairs @GUI
+      root\addChildCore widget
+
     @gameObjects = {}
 
   update: (dt) =>
@@ -23,7 +29,6 @@ export class Area
   draw: =>
     for _, gameObject in ipairs @gameObjects
       gameObject\draw!
-
 
   addGameObject: (gameObjectType, x = 0, y = 0, opts = {}) =>
     gameObject = _G[gameObjectType](self, x, y, opts)

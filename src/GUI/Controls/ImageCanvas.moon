@@ -81,14 +81,6 @@ with ImageCanvas
     @setWidth @drawable\getWidth! * sx
     @setHeight @drawable\getHeight! * sy
 
-  .move = =>
-    if @scaleX > 0.5 and @scaleY > 0.5
-      @tween = Flux.to self, 2, { scaleX: 0.5, scaleY: 0.5 }
-      @tween\oncomplete () ->
-        @resetSize!
-        @tween = Flux.to @getBoundingBox!, 2, { x: @parent\getX! + @parent.theme.stroke,
-          y: @parent\getY! + @parent.theme.stroke }
-
   .onClick = (cb) =>
     @Click = cb
 

@@ -5,8 +5,12 @@ ProgressBar = Control\extend "ProgressBar",{
   value: 0
   minValue: 0
   maxValue: 100
-  color: 0
-  background: 0
+  color: nil
+  background: nil
+  callback: nil
+  dangerZone: false
+  dangerAt: 0
+  dangerColor: nil
 }
 
 
@@ -36,7 +40,7 @@ with ProgressBar
     elseif barW > box\getWidth!
       barW = box\getWidth!
 
-    Graphics.setColor @color
+    Graphics.setColor Tint\lighten -(((@maxValue - @value)*34) * 0.0001), @color
     Graphics.rectangle "fill", box\getX!, box\getY!, barW, box\getHeight!
     Graphics.setColor r, g, b, a
 
@@ -49,6 +53,13 @@ with ProgressBar
 
   .setValue = (v) =>
     @value = v
+    @value = love.math.clamp @value, @minValue, @maxValue
 
   .setMaxValue = (v) =>
     @maxValue = value
+
+  .setDangerZone = (at) =>
+    @dangerAt = at
+
+  .isEmpty = =>
+    @value == 0

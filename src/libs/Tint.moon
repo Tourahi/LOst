@@ -160,25 +160,37 @@ class Tint
     {r,g,b,a}
 
   @lighten: (amnt, ...) =>
-    h,s,l,a = unpack(Tint\RGBtoHSL Tint\unpackColor(...))
-    Tint\HSLtoRGB h,s,l+amnt,a
+    if amnt ~= 0
+      h,s,l,a = unpack(Tint\RGBtoHSL Tint\unpackColor(...))
+      Tint\HSLtoRGB h,s,l+amnt,a
+    else
+      ...
 
   @darken: (amnt, ...) =>
-    h,s,l,a = unpack(Tint\RGBtoHSL Tint\unpackColor(...))
-    Tint\HSLtoRGB h,s,l-amnt,a
+    if amnt ~= 0
+      h,s,l,a = unpack(Tint\RGBtoHSL Tint\unpackColor(...))
+      Tint\HSLtoRGB h,s,l-amnt,a
+    else
+      ...
 
   @saturate: (amnt, ...) =>
-    h,s,v,a = unpack(Tint\RGBtoHSV Tint\unpackColor(...))
-    Tint\HSVtoRGB h,s+amnt,v,a
+    if amnt ~= 0
+      h,s,v,a = unpack(Tint\RGBtoHSV Tint\unpackColor(...))
+      Tint\HSVtoRGB h,s+amnt,v,a
+    else
+      ...
 
   @desaturate: (amnt, ...) =>
     h,s,v,a = unpack(Tint\RGBtoHSV Tint\unpackColor(...))
     Tint\HSVtoRGB h,s-amnt,v,a
 
   @hue: (hue, ...) =>
-    h,s,l,a = unpack(Tint\RGBtoHSL Tint\unpackColor(...))
-    Tint\HSLtoRGB hue,s,l,a
-
+    if hue ~= 0
+      h,s,l,a = unpack(Tint\RGBtoHSL Tint\unpackColor(...))
+      Tint\HSLtoRGB hue,s,l,a
+    else
+      ...
+      
   @invert: (...) =>
     r,g,b,a = Tint\unpackColor ...
     1-r, 1-g, 1-b, a

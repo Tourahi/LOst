@@ -20,8 +20,7 @@ export class Player extends GameObject
     @a = @ship.a
     @boosting = 0
 
-    @bBar = @area\getRoom!.GUI.bBar
-    @bBar\setColor @ship.boostColor
+    @area.GUI.bBar\setColor @ship.boostColor
 
 
     -- Timers
@@ -35,10 +34,13 @@ export class Player extends GameObject
     super dt
     @boosting = 0
     @maxV = @ship.baseV
-    if input\down 'up'
-      @boosting = 1
-      @bBar\setValue @bBar.value - (@bBar.value * 0.001)
-      @maxV = @ship.boost*@ship.baseV
+
+    if not @area.GUI.bBar\isEmpty!
+      if input\down 'up'
+        @boosting = 1
+        @area.GUI.bBar\setValue @area.GUI.bBar.value - 0.5
+        @maxV = @ship.boost*@ship.baseV
+        
     if input\down 'down' 
       @boosting = -1
       @maxV = @ship.slow*@ship.baseV
