@@ -31,5 +31,12 @@ class Ship
           player.y - 0.9*player.w*math.sin(player.r) + 0.2*player.w*math.sin(player.r - math.pi/0.98),
           {parent: self, r: random(2, 4), d: Random(0.15, 0.25), color: player.ship.burnColor}
 
+      shoot: (p) =>
+        d = 1.2*@w
+        p.area\addGameObject 'ShootEff', p.x + 1.2*@w*math.cos(p.r),
+          p.y + 1.2*@w*math.sin(p.r), {player: p, d: d}
+        p.area\addGameObject 'Projectile', p.x + 1.5*@w*math.cos(p.r),
+          p.y + 1.5*@w*math.sin(p.r), {r: p.r}
+
     }
     

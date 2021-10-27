@@ -24,7 +24,7 @@ export class Player extends GameObject
 
 
     -- Timers
-    @timer\every 0.24, -> @shoot!
+    @timer\every 0.24, -> @ship\shoot self
     if opts.glitchEnabled
       @timer\every 5, -> @glitch!
 
@@ -62,9 +62,6 @@ export class Player extends GameObject
       when 0
         @ship.burnColor = @ship.idleColor
 
-
-
-
   draw: =>
     Utils.pushRotate @x, @y, @r
     for _, poly in ipairs @polygons
@@ -80,15 +77,6 @@ export class Player extends GameObject
 
     --Graphics.circle 'line', @x, @y, @w
     --Graphics.line @x, @y, @x + @w*math.cos(@r), @y + @w*math.sin(@r)
-
- 
-  shoot: =>
-    d = 1.2*@w
-    @area\addGameObject 'ShootEff', @x + 1.2*@w*math.cos(@r),
-      @y + 1.2*@w*math.sin(@r), {player: self, d: d}
-    @area\addGameObject 'Projectile', @x + 1.5*@w*math.cos(@r),
-      @y + 1.5*@w*math.sin(@r), {r: @r}
-    
 
   die: =>
     @dead = true
