@@ -5,7 +5,7 @@ GUI = {}
 GUI.bBar = ProgressBar!
 with GUI.bBar
     \setSize 50, 5
-    \setPos G_baseW - 100, 10
+    \setPos G_baseW - 55, G_baseH - 20
     \setMaxValue 100
     \setValue 100
     \setDangerZone 20

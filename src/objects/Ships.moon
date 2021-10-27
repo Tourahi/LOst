@@ -1,8 +1,9 @@
 random = love.math.random
 
-class Ship
+Ships = {}
 
-  @Needle: ->
+with Ships
+  .Needle = ->
     return {
       name: 'Needle'
       baseV: 100
@@ -25,6 +26,7 @@ class Ship
       slowColor: Colors.white
       boost: 1.5
       slow: 0.5
+
       burn: (player) ->
         player.area\addGameObject 'TailBurn',
           player.x - player.w*math.cos(player.r) + 0.2*player.w*math.cos(player.r - math.pi/0.98),
@@ -38,5 +40,11 @@ class Ship
         p.area\addGameObject 'Projectile', p.x + 1.5*@w*math.cos(p.r),
           p.y + 1.5*@w*math.sin(p.r), {r: p.r}
 
+        
+
     }
     
+
+
+
+Ships

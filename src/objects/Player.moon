@@ -1,11 +1,12 @@
 random = love.math.random
-Ship = assert require 'src/objects/Ship'
+Ships = assert require 'src/objects/Ships'
 
 export class Player extends GameObject
   new: (area, x, y, opts = {}) =>
     super area, x, y, opts
-    @ship = Ship.Needle!
+    @ship = Ships.Needle!
     @polygons = @ship\polys!
+    @bebop = area\addGameObject 'Bebop', @x, @y, @ship
 
     @x, @y = x, y
     @w, @h = @ship.w, @ship.h
@@ -61,6 +62,8 @@ export class Player extends GameObject
         @ship.burnColor = @ship.slowColor
       when 0
         @ship.burnColor = @ship.idleColor
+      
+    @bebop\follow dt, self
 
   draw: =>
     Utils.pushRotate @x, @y, @r

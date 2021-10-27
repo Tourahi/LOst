@@ -7,6 +7,7 @@ Tools Update:
     [x] Update the Colors module --> Tint
     [] Bebop :
         - small ship that will follow the player an shoot.
-        - 
+        - Size : 6px w&h
     [] Dashboard :
         [x] boost bar
+            [] when the player stops the boost level goes up.
