@@ -6,7 +6,8 @@ export class Player extends GameObject
     super area, x, y, opts
     @ship = Ships.Needle!
     @polygons = @ship\polys!
-    @bebop = area\addGameObject 'Bebop', @x, @y, @ship
+
+    @bebop = area\addGameObject 'Bebop', @x, @y, {ship: @ship, type: 'B1a'}
 
     @x, @y = x, y
     @w, @h = @ship.w, @ship.h
@@ -62,8 +63,9 @@ export class Player extends GameObject
         @ship.burnColor = @ship.slowColor
       when 0
         @ship.burnColor = @ship.idleColor
-      
-    @bebop\follow dt, self
+    
+    if @bebop
+      @bebop\follow dt, self
 
   draw: =>
     Utils.pushRotate @x, @y, @r
