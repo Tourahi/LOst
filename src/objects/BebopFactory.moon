@@ -23,6 +23,12 @@ with BebopFactory
 
 
     B.follow = (dt, p) =>
+    
+      if @x < 0 then @die!
+      if @y < 0 then @die!
+      if @x > G_baseW then @die!
+      if @y > G_baseH then @die!
+
       @r = p.r
       if input\down 's'
         @collider\setLinearVelocity @maxV*math.cos(@r), @maxV*math.sin(@r)
@@ -40,7 +46,15 @@ with BebopFactory
             return @y + v
         )
         Graphics.polygon 'line', points
-      Graphics.pop!    
+      Graphics.pop!
+
+    B.die = =>
+      @dead = true
+      @area\getRoom!.player.bebop = nil
+      with @area\getCamera!
+        \shake 4, 40, 0.4
+      for i = 1, love.math.random(10, 22) do @area\addGameObject 'PlayerExplode', @x, @y
+ 
 
 
 BebopFactory

@@ -14,17 +14,22 @@ export class Bebop extends GameObject
     @maxV = 0
     @a = 0
     @rv = 0
+    @area = area
     
     -- Methods
     @follow = ->
     @draw = ->
     -- @burn = ->
     @shoot = ->
+    @die = ->
 
     -- Set Bebop data
     BebopFactory[type] self, ship, x, y
 
-    @collider = area.world\newCircleCollider @x, @y, @w
+    @collider = @area.world\newCircleCollider @x, @y, @w
     @collider\setObject self
     @collider\setPreSolve (c1, c2, contact)->
       contact\setEnabled false
+
+  destroy: =>
+    super self
