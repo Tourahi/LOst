@@ -32,16 +32,20 @@ with ProgressBar
     r, g, b, a = Graphics.getColor!
 
     Graphics.setColor @background
-    Graphics.rectangle "fill", box\getX!, box\getY!, box\getWidth!, box\getHeight!
+    Graphics.rectangle "fill", box\getX!, box\getY!, box\getWidth!, box\getHeight!, 2, 2
+
+
 
     barW = @value / (@maxValue - @minValue) * box\getWidth!
     if barW < 0
       barW = 0
     elseif barW > box\getWidth!
       barW = box\getWidth!
+    
+    Graphics.setColor @color
+    Graphics.rectangle "fill", box\getX!, box\getY!, barW, box\getHeight!, 2, 2
 
-    Graphics.setColor Tint\lighten -(((@maxValue - @value)*34) * 0.0001), @color
-    Graphics.rectangle "fill", box\getX!, box\getY!, barW, box\getHeight!
+
     Graphics.setColor r, g, b, a
 
 

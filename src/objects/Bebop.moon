@@ -1,4 +1,4 @@
-BebopSchema = assert require 'src/objects/BebopSchema'
+BebopFactory = assert require 'src/objects/BebopFactory'
 
 export class Bebop extends GameObject
   new: (area, x, y, opts) =>
@@ -13,13 +13,16 @@ export class Bebop extends GameObject
     @v = 0
     @maxV = 0
     @a = 0
-
+    @rv = 0
+    
     -- Methods
     @follow = ->
     @draw = ->
+    -- @burn = ->
+    @shoot = ->
 
     -- Set Bebop data
-    BebopSchema[type] self, ship, x, y
+    BebopFactory[type] self, ship, x, y
 
     @collider = area.world\newCircleCollider @x, @y, @w
     @collider\setObject self

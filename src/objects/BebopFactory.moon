@@ -1,11 +1,13 @@
-BebopSchema = {}
+random = love.math.random
 
-with BebopSchema
+BebopFactory = {}
+
+with BebopFactory
   .B1a = (B, ship, x, y) ->
-    B.x = x - (ship.w * 2)
-    B.y = y - ship.h
-    B.w = 6
-    B.h = 6
+    B.x = x - ship.w - 4
+    B.y = y
+    B.w = 8
+    B.h = 8
     B.polygons = {
       {      
         B.w, 0
@@ -14,16 +16,19 @@ with BebopSchema
         0, B.h/2
       }        
     }
-    B.r = -math.pi / 2
+    B.r = 2.10*math.pi
     B.v = 0
-    B.maxV = 100
+    B.maxV = 150
     B.a = ship.a
+
 
     B.follow = (dt, p) =>
       @r = p.r
-      @x, @y = p.x - (p.w*2), p.y - p.h
-      @v = math.min @v + @a*dt, @maxV
-      @collider\setLinearVelocity @v*math.cos(@r), @v*math.sin(@r)
+      if input\down 's'
+        @collider\setLinearVelocity @maxV*math.cos(@r), @maxV*math.sin(@r)
+      else
+        @collider\setLinearVelocity p.v*math.cos(p.r), p.v*math.sin(p.r)
+
 
     B.draw = =>
       Utils.pushRotate @x, @y, @r
@@ -38,4 +43,4 @@ with BebopSchema
       Graphics.pop!    
 
 
-BebopSchema
+BebopFactory

@@ -22,7 +22,7 @@ with Ships
         }
       idleColor: Colors.aqua
       burnColor: Colors.aqua
-      boostColor: Tint\darken(0.099, Tint\hue(0.800, Colors.aqua))
+      boostColor: Tint\lighten 0.099, Colors.magenta
       slowColor: Colors.white
       boost: 1.5
       slow: 0.5

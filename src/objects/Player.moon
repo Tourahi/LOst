@@ -40,7 +40,8 @@ export class Player extends GameObject
     if not @area.GUI.bBar\isEmpty!
       if input\down 'up'
         @boosting = 1
-        @area.GUI.bBar\setValue @area.GUI.bBar.value - 0.5
+        color = @area.GUI.bBar.color
+        @area.GUI.bBar\setValue @area.GUI.bBar.value - 0.2
         @maxV = @ship.boost*@ship.baseV
         
     if input\down 'down' 
