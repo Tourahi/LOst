@@ -37,6 +37,7 @@ export Camera = assert require 'libs/hump/camera'
 export Physics = assert require 'libs/windfield/windfield'
 export fn = assert require 'libs/Moses/moses'
 assert require 'libs/MeowCore'
+export Flux = MeowC.core.flux
 
 assert require 'src/objects/Area'
 assert require 'src/GameObject'

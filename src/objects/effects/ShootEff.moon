@@ -2,6 +2,7 @@
 export class ShootEff extends GameObject
   new: (area, x, y, opts) =>
     super area, x, y, opts
+    @depth = 100
     @w = opts.w or 8
     @x, @y = x, y
     @timer\tween 0.1, self, {w: 0}, 'in-out-cubic',-> @dead = true

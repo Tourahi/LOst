@@ -4,6 +4,7 @@ export class PlayerExplode extends GameObject
   new: (area, x, y, opts) =>
     super area, x, y, opts
     @color = opts.color or Colors.yellow
+    @depth = 100
     @r = random 0, 2.5*math.pi
     @s = opts.s or random 2, 3
     @v = opts.v or random 75, 150

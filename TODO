@@ -15,6 +15,15 @@ Tools Update:
             [] when the player stops the boost level goes up.
 
     [] Refactor Bebop class and BebopFactory
+    [] Basics of gameplay
+        -  ammo, boost, HP and skill points
+    [x] Drawing order
+        - depth
+
+Bugs:
+    [] Projectile sometimes hit the player 
+        
+
 
 
 Notes:

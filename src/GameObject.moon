@@ -12,6 +12,7 @@ export class GameObject
     @creationTime = getTime!
     @timer = Timer!
     @dead = false
+    @depth = 50
     @collider = nil
 
   update: (dt) =>

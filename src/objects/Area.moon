@@ -27,6 +27,9 @@ export class Area
         remove @gameObjects, i
 
   draw: =>
+    table.sort @gameObjects, (a, b) ->
+      if a.depth == b.depth then return a.creationTime < b.creationTime
+      else return a.depth < b.depth  
     for _, gameObject in ipairs @gameObjects
       gameObject\draw!
 

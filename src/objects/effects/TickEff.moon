@@ -1,6 +1,7 @@
 export class TickEff extends GameObject
   new: (area, x, y, opts) =>
     super area, x, y, opts
+    @depth = 100
     @w, @h = 48, 32
     @yOffset = 0
     @timer\tween 0.13, self, {h: 0, yOffset: 32}, 'in-out-cubic', -> @dead = true
