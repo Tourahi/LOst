@@ -10,6 +10,9 @@ export class Projectile extends GameObject
     with @collider
       \setObject self
       \setLinearVelocity @v*math.cos(@r), @v*math.sin(@r)
+      \setPreSolve (c1, c2, contact)->
+        if c2.id == @area.room.player.bebop.id
+          contact\setEnabled false
 
   update: (dt) =>
     super dt
