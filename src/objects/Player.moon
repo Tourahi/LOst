@@ -21,6 +21,12 @@ export class Player extends GameObject
     @maxV = @ship.baseV
     @a = @ship.a
     @boosting = 0
+    @maxBoost = 100
+    @boost = @maxBoost
+    @canBoost = true
+    @boostTimer = 0
+    @boostCooldown = 2
+    
 
     @area.GUI.bBar\setColor @ship.boostColor
 
@@ -43,20 +49,34 @@ export class Player extends GameObject
     if @y < 0 then @die!
     if @x > G_baseW then @die!
     if @y > G_baseH then @die!
-      
+    
+    if @boostTimer > @boostCooldown then @canBoost = true
+    @boost = math.min @boost + 10*dt, @maxBoost  
+    @boostTimer += dt
     @boosting = 0
     @maxV = @ship.baseV
 
-    if not @area.GUI.bBar\isEmpty!
-      if input\down 'up'
-        @boosting = 1
-        color = @area.GUI.bBar.color
-        @area.GUI.bBar\setValue @area.GUI.bBar.value - 0.2
-        @maxV = @ship.boost*@ship.baseV
+    if input\down('up') and @boost > 1 and @canBoost
+      @boosting = 1
+      color = @area.GUI.bBar.color
+      @boost = @boost - 50*dt
+      if @boost <= 1
+       @boosting = 0
+       @canBoost = false
+       @boostTimer = 0
+      @maxV = @ship.boost*@ship.baseV
         
-    if input\down 'down' 
+    if input\down('down') and @boost > 1 and @canBoost
       @boosting = -1
       @maxV = @ship.slow*@ship.baseV
+      @boost = @boost - 50*dt
+      if @boost <= 1
+        @boosting = 0
+        @canBoost = false
+        @boostTimer = 0
+      
+      
+    @area.GUI.bBar\setValue @boost
 
 
     if input\down 'left'
