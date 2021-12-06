@@ -12,6 +12,7 @@ input\bindArr {
   'down': 'down'
   'f2': 'f2'
   'f4': 'f4'
+  'l': 'l'
   's': 's'
   'escape': 'escape'
 }

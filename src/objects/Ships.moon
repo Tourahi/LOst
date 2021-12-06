@@ -8,6 +8,7 @@ with Ships
       name: 'Needle'
       baseV: 100
       a: 100
+      fromP: 60
       rv: 2.10*math.pi
       w: 12
       h: 12
@@ -39,12 +40,7 @@ with Ships
           p.y + 1.2*@w*math.sin(p.r), {player: p, d: d}
         p.area\addGameObject 'Projectile', p.x + 1.5*@w*math.cos(p.r),
           p.y + 1.5*@w*math.sin(p.r), {r: p.r}
-
-        
-
+    
     }
     
-
-
-
 Ships

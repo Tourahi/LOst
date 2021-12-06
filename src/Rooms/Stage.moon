@@ -21,7 +21,7 @@ export class Stage
 
     if input\down 'f4'
       @player\die!
-    if input\down 'f2'
+    if input\down 'l'
       Leak.report!
     
 

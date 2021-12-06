@@ -1,6 +1,5 @@
 assert require 'src/globals'
-freqCounter = assert require 'src/freqCounter'
-MManager = MeowC.core.Manager
+
 
 with love
   .load = ->

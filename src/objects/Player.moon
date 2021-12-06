@@ -26,7 +26,11 @@ export class Player extends GameObject
 
 
     -- Timers
-    @timer\every 0.24, -> @ship\shoot self
+    @timer\every 0.24, -> 
+      @ship\shoot self
+      if @bebop
+        @bebop\shoot!
+        
     if opts.glitchEnabled
       @timer\every 5, -> @glitch!
 
@@ -34,6 +38,12 @@ export class Player extends GameObject
 
   update: (dt) =>
     super dt
+    
+    if @x < 0 then @die!
+    if @y < 0 then @die!
+    if @x > G_baseW then @die!
+    if @y > G_baseH then @die!
+      
     @boosting = 0
     @maxV = @ship.baseV
 

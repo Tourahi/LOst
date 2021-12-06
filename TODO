@@ -6,10 +6,21 @@ Tools Update:
         - It considers moon classes "Unknown" objects
     [x] Update the Colors module --> Tint
     [] Bebop :
-        - small ship that will follow the player an shoot.
-        - Size : 6px w&h
-        - the player owns the bebop.
-            - when calling the bebop the type should be provided
+        - small ship that will follow the player an shoot. [x]
+        - Size : 6px w&h [x]
+        - the player owns the bebop. [x]
+            - when calling the bebop the type should be provided [x]
     [] Dashboard :
         [x] boost bar
             [] when the player stops the boost level goes up.
+
+    [] Refactor Bebop class and BebopFactory
+
+
+Notes:
+    * Rooms:Stage
+            -> area -> area:physicsWorld 
+            -> player 
+            -> mainCanvas 
+            -> Camera
+    * 

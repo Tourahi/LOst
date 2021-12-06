@@ -5,6 +5,7 @@ export class Bebop extends GameObject
     super area, x, y
     ship = opts.ship
     type = opts.type
+
     -- Members
     @polygons = {}
     @x, @y = 0,0
@@ -27,9 +28,11 @@ export class Bebop extends GameObject
     BebopFactory[type] self, ship, x, y
 
     @collider = @area.world\newCircleCollider @x, @y, @w
+    
     @collider\setObject self
     @collider\setPreSolve (c1, c2, contact)->
-      contact\setEnabled false
+        if c1.id == @area.room.player.id
+            contact\setEnabled false
 
   destroy: =>
     super self
