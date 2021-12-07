@@ -15,6 +15,7 @@ export class Bebop extends GameObject
     @maxV = 0
     @a = 0
     @rv = 0
+    @offsetFromPlayer = Vector2D.zero
     @area = area
     
     -- Methods
@@ -32,6 +33,7 @@ export class Bebop extends GameObject
     with @collider
         \setObject self
         \setCollisionClass 'Bebop'
+        \setFixedRotation false
         \setLinearVelocity @v*math.cos(@r), @v*math.sin(@r)
 
   destroy: =>

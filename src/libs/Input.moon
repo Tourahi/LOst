@@ -143,7 +143,6 @@ class Input
               @sequences[sequenceKey] = nil
 
   down: (action = nil, interval = nil, delay = nil) =>
-
     if action and interval and delay
       for _, key in ipairs @binds[action]
         if @state[key] and not @prevState[key]

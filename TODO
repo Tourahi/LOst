@@ -28,6 +28,8 @@ Bugs:
         * Fixed : Added collision classes. (Yep i did not Read the docs :).)
     [x] In BebopFactory projectileHeading is sometimes nil #2
         * Test : if nil set it to vec2d.zero
+    [] Input Realease is not working && pressed return more than once in one frame #3
+
         
 
 

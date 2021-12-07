@@ -12,7 +12,7 @@ with BebopFactory
       {      
         B.w, 0
         0, -B.h/2
-        B.w/2, 0
+        -B.w/2, 0
         0, B.h/2
       }        
     }
@@ -20,8 +20,9 @@ with BebopFactory
     B.r = -math.pi / 2
     B.rv = ship.rv
     B.v = 0
-    B.maxV = ship.baseV
-    B.a = ship.a
+    B.maxV = 90
+    B.a = 100
+    B.offsetFromPlayer = Vector2D 10, 10
 
     B.follow = (dt, p) =>
       if @x < 0 then @die!
@@ -36,15 +37,17 @@ with BebopFactory
       if input\down 'right'
         @r = @r + @rv*dt
 
-      projectileHeading = Vector2D(@collider\getLinearVelocity!)\norm!
-      if projectileHeading == nil
-        projectileHeading = Vector2D.zero!
-      angle = math.atan2 p.y - @y, p.x - @x
+      if input\released 's'
+        print "Hit"
+        @offsetFromPlayer = -@offsetFromPlayer
+      
+
+      projectileHeading = Vector2D(@collider\getLinearVelocity!)\norm! or Vector2D.zero!
+      angle = math.atan2 (p.y + @offsetFromPlayer.x) - @y, (p.x + @offsetFromPlayer.y) - @x
       toTargetHeading = Vector2D(math.cos(angle), math.sin(angle))\norm!
       finalHeading = (projectileHeading + 0.1*toTargetHeading)\norm!
       @collider\setLinearVelocity @v * finalHeading.x, @v * finalHeading.y
       
-      -- Log.error 'finalHeading : ', finalHeading
 
 
   

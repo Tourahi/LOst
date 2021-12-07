@@ -127,6 +127,7 @@ export class Player extends GameObject
 
   die: =>
     @dead = true
+    @bebop\die!
     if opts.flashEnabled
       Utils.screenFlash 3
     Utils.slowDt 0.2, 1

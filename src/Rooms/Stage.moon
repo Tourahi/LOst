@@ -35,7 +35,7 @@ export class Stage
         {color: Colors.red}
     if input\down 'l'
       Leak.report!
-    
+
 
   draw: () =>
     Graphics.setCanvas @mainCanvas
