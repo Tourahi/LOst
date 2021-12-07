@@ -27,8 +27,9 @@ Bugs:
     [x] Projectile sometimes hit the player #1
         * Fixed : Added collision classes. (Yep i did not Read the docs :).)
     [x] In BebopFactory projectileHeading is sometimes nil #2
-        * Test : if nil set it to vec2d.zero
-    [] Input Realease is not working && pressed return more than once in one frame #3
+        * Fixed : if nil set it to vec2d.zero
+    [x] Input Realease is not working && pressed return more than once in one frame #3
+        * Fixed : Binds have to be in the load function.
 
         
 

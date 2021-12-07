@@ -94,6 +94,8 @@ export class Player extends GameObject
     if input\down 'right'
       @r = @r + @rv*dt
 
+
+
     @v = math.min @v + @a*dt, @maxV
 
     @collider\setLinearVelocity @v*math.cos(@r), @v*math.sin(@r)

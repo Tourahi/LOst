@@ -1,25 +1,8 @@
 -- input bindings
-export Input = assert require 'src/libs/Input'
 export Tint = assert require 'src/libs/Tint'
 export Leak = assert require 'src/libs/Leak'
 export Vector2D = assert require 'src/libs/Vector2D'
 assert require 'src/libs/Colors'
-export input = Input!
-
-input\bindArr {
-  'right': 'right'
-  'left': 'left'
-  'up': 'up'
-  'down': 'down'
-  'f2': 'f2'
-  'f4': 'f4'
-  'l': 'l'
-  's': 's'
-  'return': 'enter'
-  'escape': 'escape'
-}
-
-
 
 import random from love.math
 M = assert require 'moon'

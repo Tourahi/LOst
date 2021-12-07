@@ -1,8 +1,9 @@
 assert require 'src/globals'
-
+export Input = assert require 'src/libs/Input'
 
 with love
   .load = ->
+    export input = Input!
     Graphics.setDefaultFilter 'nearest', 'nearest'
     Graphics.setLineStyle 'rough'
     Graphics.setBackgroundColor Colors.customDim
@@ -18,6 +19,19 @@ with love
     Utils.room.gotoRoom 'Stage'
 
     Utils.resize opts.gameScale
+
+    input\bindArr {
+      'right': 'right'
+      'left': 'left'
+      'up': 'up'
+      'down': 'down'
+      'f2': 'f2'
+      'f4': 'f4'
+      'l': 'l'
+      's': 's'
+      'return': 'enter'
+      'escape': 'escape'
+    }
 
   .update = (dt) ->
     if input\down 'escape' then love.event.quit!

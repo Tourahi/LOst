@@ -37,8 +37,7 @@ with BebopFactory
       if input\down 'right'
         @r = @r + @rv*dt
 
-      if input\released 's'
-        print "Hit"
+      if input\pressed 's'
         @offsetFromPlayer = -@offsetFromPlayer
       
 
