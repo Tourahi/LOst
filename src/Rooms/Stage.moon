@@ -8,6 +8,9 @@ export class Stage
     @player = @area\addGameObject 'Player', G_baseW/2, G_baseH/2
     @mainCanvas = Graphics.newCanvas G_baseW, G_baseH
     @camera = Camera!
+    with @area.world
+      \addCollisionClass 'Collectable'
+    
 
     Log.debug @player.id
 
@@ -20,7 +23,9 @@ export class Stage
     @area\update dt
 
     if input\down 'f4'
-      @player\die!
+      -- @player\die!
+      @area\addGameObject 'Ammo', Random(0, G_baseW), Random(0, G_baseH),
+        {color: Colors.red}
     if input\down 'l'
       Leak.report!
     

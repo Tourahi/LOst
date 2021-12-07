@@ -36,6 +36,8 @@ export Timer = assert require 'libs/EnhancedTimer/EnhancedTimer'
 export Camera = assert require 'libs/hump/camera'
 export Physics = assert require 'libs/windfield/windfield'
 export fn = assert require 'libs/Moses/moses'
+draft = assert require 'libs/draft/draft'
+export Draft = draft!
 assert require 'libs/MeowCore'
 export Flux = MeowC.core.flux
 

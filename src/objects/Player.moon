@@ -27,6 +27,11 @@ export class Player extends GameObject
     @boostTimer = 0
     @boostCooldown = 2
     
+    @maxHp = 100
+    @hp = @maxHp
+    
+    @maxAmmo = 100
+    @ammo = @maxAmmo
 
     @area.GUI.bBar\setColor @ship.boostColor
 
