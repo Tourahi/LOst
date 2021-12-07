@@ -26,6 +26,8 @@ Tools Update:
 Bugs:
     [x] Projectile sometimes hit the player #1
         * Fixed : Added collision classes. (Yep i did not Read the docs :).)
+    [x] In BebopFactory projectileHeading is sometimes nil #2
+        * Test : if nil set it to vec2d.zero
         
 
 

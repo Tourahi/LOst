@@ -63,8 +63,8 @@ export class Player extends GameObject
     @boosting = 0
     @maxV = @ship.baseV
     
-    if @collider\enter 'Collectable'
-        Log.debug 'ENter'
+   -- if @collider\enter 'Collectable'
+       -- Log.debug 'ENter'
 
     if input\down('up') and @boost > 1 and @canBoost
       @boosting = 1
@@ -95,6 +95,7 @@ export class Player extends GameObject
       @r = @r + @rv*dt
 
     @v = math.min @v + @a*dt, @maxV
+
     @collider\setLinearVelocity @v*math.cos(@r), @v*math.sin(@r)
 
     switch @boosting

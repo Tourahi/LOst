@@ -32,6 +32,7 @@ export class Bebop extends GameObject
     with @collider
         \setObject self
         \setCollisionClass 'Bebop'
+        \setLinearVelocity @v*math.cos(@r), @v*math.sin(@r)
 
   destroy: =>
     super self

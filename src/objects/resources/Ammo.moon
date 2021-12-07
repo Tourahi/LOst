@@ -16,7 +16,16 @@ export class Ammo extends GameObject
       \applyAngularImpulse Random(-24, 24)
     
   update: (dt) =>
-    super dt   
+    super dt
+    target = @area.room.player
+    if target
+      projectileHeading = Vector2D(@collider\getLinearVelocity!)\norm!
+      angle = math.atan2 target.y - @y, target.x - @x
+      toTargetHeading = Vector2D(math.cos(angle), math.sin(angle))\norm!
+      finalHeading = (projectileHeading + 0.1*toTargetHeading)\norm!
+      @collider\setLinearVelocity @v * finalHeading.x, @v * finalHeading.y
+    else
+      @collider\setLinearVelocity @v*math.cos(@r), @v*math.sin(@r)
     
   draw: =>
     r, g, b, a = Graphics.getColor!

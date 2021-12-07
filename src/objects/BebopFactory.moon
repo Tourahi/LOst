@@ -16,15 +16,38 @@ with BebopFactory
         0, B.h/2
       }        
     }
+    
+    B.r = -math.pi / 2
+    B.rv = ship.rv
+    B.v = 0
+    B.maxV = ship.baseV
+    B.a = ship.a
 
     B.follow = (dt, p) =>
       if @x < 0 then @die!
       if @y < 0 then @die!
       if @x > G_baseW then @die!
-      if @y > G_baseH then @die!         
-      @r = p.r  
+      if @y > G_baseH then @die!
+
+      @v = math.min @v + @a*dt, @maxV
+
+      if input\down 'left'
+        @r = @r - @rv*dt
+      if input\down 'right'
+        @r = @r + @rv*dt
+
+      projectileHeading = Vector2D(@collider\getLinearVelocity!)\norm!
+      if projectileHeading == nil
+        projectileHeading = Vector2D.zero!
+      angle = math.atan2 p.y - @y, p.x - @x
+      toTargetHeading = Vector2D(math.cos(angle), math.sin(angle))\norm!
+      finalHeading = (projectileHeading + 0.1*toTargetHeading)\norm!
+      @collider\setLinearVelocity @v * finalHeading.x, @v * finalHeading.y
       
-      @collider\setLinearVelocity p.v*math.cos(@r), p.v*math.sin(@r)
+      -- Log.error 'finalHeading : ', finalHeading
+
+
+  
 
     B.draw = =>
       Utils.pushRotate @x, @y, @r

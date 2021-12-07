@@ -2,6 +2,7 @@
 export Input = assert require 'src/libs/Input'
 export Tint = assert require 'src/libs/Tint'
 export Leak = assert require 'src/libs/Leak'
+export Vector2D = assert require 'src/libs/Vector2D'
 assert require 'src/libs/Colors'
 export input = Input!
 
@@ -41,6 +42,7 @@ draft = assert require 'libs/draft/draft'
 export Draft = draft!
 assert require 'libs/MeowCore'
 export Flux = MeowC.core.flux
+
 
 assert require 'src/objects/Area'
 assert require 'src/GameObject'
