@@ -12,7 +12,9 @@ export class Player extends GameObject
     @x, @y = x, y
     @w, @h = @ship.w, @ship.h
     @collider = area.world\newCircleCollider @x, @y, @w
-    @collider\setObject self
+    with @collider
+      \setObject self
+      \setCollisionClass 'Player'
 
     -- Movement related properties
     @r = -math.pi / 2

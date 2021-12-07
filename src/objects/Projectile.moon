@@ -9,12 +9,8 @@ export class Projectile extends GameObject
     @collider = @area.world\newCircleCollider @x, @y, @s
     with @collider
       \setObject self
+      \setCollisionClass 'Projectile'
       \setLinearVelocity @v*math.cos(@r), @v*math.sin(@r)
-      \setPreSolve (c1, c2, contact)->
-        print "a" ,c2.id == @area.room.player.bebop.id
-        print "B" ,c1.id == @area.room.player.bebop.id
-        if c2.id == @area.room.player.bebop.id or c2.id == @area.room.player.id 
-          contact\setEnabled false
 
   update: (dt) =>
     super dt

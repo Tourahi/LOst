@@ -5,11 +5,17 @@ export class Stage
     -- Area
     @area = Area self, assert(require('src/Rooms/GUI/Stage'))
     @area\addPhysicsWorld!
+    
+    -- Colli classes
+    with @area.world
+      \addCollisionClass 'Player'
+      \addCollisionClass 'Projectile', {ignores: {'Projectile', 'Player'}}
+      \addCollisionClass 'Collectable'
+      
     @player = @area\addGameObject 'Player', G_baseW/2, G_baseH/2
     @mainCanvas = Graphics.newCanvas G_baseW, G_baseH
     @camera = Camera!
-    with @area.world
-      \addCollisionClass 'Collectable'
+    
     
 
     Log.debug @player.id

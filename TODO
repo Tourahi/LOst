@@ -16,12 +16,16 @@ Tools Update:
 
     [] Refactor Bebop class and BebopFactory
     [] Basics of gameplay
-        -  ammo, boost, HP and skill points
+        - ammo
+        - boost [x]
+        - HP
+        - skill points
     [x] Drawing order
         - depth
 
 Bugs:
-    [] Projectile sometimes hit the player 
+    [x] Projectile sometimes hit the player 
+        * Fixed : Added collision classes. (Yep i did not Read the docs :).)
         
 
 
