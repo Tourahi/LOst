@@ -29,10 +29,9 @@ export class Bebop extends GameObject
 
     @collider = @area.world\newCircleCollider @x, @y, @w
     
-    @collider\setObject self
-    @collider\setPreSolve (c1, c2, contact)->
-        if c1.id == @area.room.player.id
-            contact\setEnabled false
+    with @collider
+        \setObject self
+        \setCollisionClass 'Bebop'
 
   destroy: =>
     super self

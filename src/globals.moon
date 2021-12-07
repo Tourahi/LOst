@@ -14,6 +14,7 @@ input\bindArr {
   'f4': 'f4'
   'l': 'l'
   's': 's'
+  'return': 'enter'
   'escape': 'escape'
 }
 

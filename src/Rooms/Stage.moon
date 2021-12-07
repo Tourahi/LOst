@@ -9,8 +9,9 @@ export class Stage
     -- Colli classes
     with @area.world
       \addCollisionClass 'Player'
-      \addCollisionClass 'Projectile', {ignores: {'Projectile', 'Player'}}
-      \addCollisionClass 'Collectable'
+      \addCollisionClass 'Bebop', {ignores: {'Player'}}
+      \addCollisionClass 'Projectile', {ignores: {'Projectile', 'Player', 'Bebop'}}
+      \addCollisionClass 'Collectable', {ignores: {'Collectable', 'Projectile', 'Bebop'}}
       
     @player = @area\addGameObject 'Player', G_baseW/2, G_baseH/2
     @mainCanvas = Graphics.newCanvas G_baseW, G_baseH

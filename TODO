@@ -24,7 +24,7 @@ Tools Update:
         - depth
 
 Bugs:
-    [x] Projectile sometimes hit the player 
+    [x] Projectile sometimes hit the player #1
         * Fixed : Added collision classes. (Yep i did not Read the docs :).)
         
 

@@ -62,6 +62,9 @@ export class Player extends GameObject
     @boostTimer += dt
     @boosting = 0
     @maxV = @ship.baseV
+    
+    if @collider\enter 'Collectable'
+        Log.debug 'ENter'
 
     if input\down('up') and @boost > 1 and @canBoost
       @boosting = 1
