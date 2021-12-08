@@ -57,6 +57,12 @@ export class Player extends GameObject
     if @x > G_baseW then @die!
     if @y > G_baseH then @die!
     
+    if @collider\enter 'Collectable'
+        colliData = @collider\getEnterCollisionData 'Collectable'
+        object = colliData.collider\getObject!
+        if object.__class.__name == "Ammo"
+            object\die!
+    
     if @boostTimer > @boostCooldown then @canBoost = true
     @boost = math.min @boost + 10*dt, @maxBoost  
     @boostTimer += dt

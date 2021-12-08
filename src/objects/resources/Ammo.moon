@@ -35,4 +35,11 @@ export class Ammo extends GameObject
     Graphics.pop!
     Graphics.setColor r, g, b, a
     
+  die: =>
+    @dead = true
+    for i = 1, love.math.random(4, 6) do @area\addGameObject 'PlayerExplode', @x, @y, {color: @color}
+    @area\addGameObject 'ResourceCollectEffect', @x, @y, {
+      color: @color, w: @w, h: @h}
+
+    
     

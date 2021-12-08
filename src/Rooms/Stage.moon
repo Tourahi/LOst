@@ -32,7 +32,7 @@ export class Stage
     if input\down 'f4'
       -- @player\die!
       @area\addGameObject 'Ammo', Random(0, G_baseW), Random(0, G_baseH),
-        {color: Colors.red}
+        {color: Colors.magenta}
     if input\down 'l'
       Leak.report!
 

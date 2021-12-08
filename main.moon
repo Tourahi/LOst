@@ -1,5 +1,5 @@
 assert require 'src/globals'
-export Input = assert require 'src/libs/Input'
+Input = assert require 'src/libs/Input'
 
 with love
   .load = ->
