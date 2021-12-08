@@ -30,6 +30,8 @@ Bugs:
         * Fixed : if nil set it to vec2d.zero
     [x] Input Realease is not working && pressed return more than once in one frame #3
         * Fixed : Binds have to be in the load function.
+    [x] Leak!!!
+        * Fixed : collectables are not destroyed.
 
         
 

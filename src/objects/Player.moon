@@ -34,15 +34,16 @@ export class Player extends GameObject
     
     @maxAmmo = 100
     @ammo = @maxAmmo
+    @
 
     @area.GUI.bBar\setColor @ship.boostColor
 
 
     -- Timers
-    @timer\every 0.24, -> 
-      @ship\shoot self
-      if @bebop
-        @bebop\shoot!
+    -- @timer\every 0.24, -> 
+    --   @ship\shoot self
+    --   if @bebop
+    --     @bebop\shoot!
         
     if opts.glitchEnabled
       @timer\every 5, -> @glitch!
@@ -56,12 +57,7 @@ export class Player extends GameObject
     if @y < 0 then @die!
     if @x > G_baseW then @die!
     if @y > G_baseH then @die!
-    
-    if @collider\enter 'Collectable'
-        colliData = @collider\getEnterCollisionData 'Collectable'
-        object = colliData.collider\getObject!
-        if object.__class.__name == "Ammo"
-            object\die!
+          
     
     if @boostTimer > @boostCooldown then @canBoost = true
     @boost = math.min @boost + 10*dt, @maxBoost  
@@ -136,6 +132,7 @@ export class Player extends GameObject
   die: =>
     @dead = true
     @bebop\die!
+    @area.room.player = nil
     if opts.flashEnabled
       Utils.screenFlash 3
     Utils.slowDt 0.2, 1

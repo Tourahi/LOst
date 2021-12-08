@@ -24,6 +24,8 @@ export class GameObject
   draw: =>
 
   destroy: =>
+    if @__class.__name == "PlayerExplode"
+      print "Removed PlayerExplode"
     @timer\destroy!
     if @collider
       @collider\destroy!

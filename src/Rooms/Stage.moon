@@ -30,9 +30,10 @@ export class Stage
     @area\update dt
 
     if input\down 'f4'
-      -- @player\die!
       @area\addGameObject 'Ammo', Random(0, G_baseW), Random(0, G_baseH),
         {color: Colors.magenta}
+      -- Gtimer\after 5, -> o\die!
+        
     if input\down 'l'
       Leak.report!
 

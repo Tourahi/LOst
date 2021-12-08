@@ -8,8 +8,7 @@ export class ResourceCollectEffect extends GameObject
     @color = opts.color or Colors.white
     
     @timer\after 0.1, -> 
-      @timer\after 0.15, ->
-        @dead = true
+      @timer\after 0.15, -> @dead = true
  
   update: (dt) =>
     super dt

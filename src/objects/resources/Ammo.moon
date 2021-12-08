@@ -1,5 +1,3 @@
-
-
 export class Ammo extends GameObject
   new: (area, x, y, opts) =>
     super area, x, y, opts
@@ -17,15 +15,22 @@ export class Ammo extends GameObject
     
   update: (dt) =>
     super dt
-    target = @area.room.player
-    if target
+
+    if @collider\enter 'Player'
+      object = @collider\getEnterCollisionData('Player').collider\getObject!
+      object.boost = 100
+      @die!
+      
+    if @area.room.player
       projectileHeading = Vector2D(@collider\getLinearVelocity!)\norm!
-      angle = math.atan2 target.y - @y, target.x - @x
+      angle = math.atan2 @area.room.player.y - @y, @area.room.player.x - @x
       toTargetHeading = Vector2D(math.cos(angle), math.sin(angle))\norm!
       finalHeading = (projectileHeading + 0.1*toTargetHeading)\norm!
       @collider\setLinearVelocity @v * finalHeading.x, @v * finalHeading.y
     else
       @collider\setLinearVelocity @v*math.cos(@r), @v*math.sin(@r)
+      
+
     
   draw: =>
     r, g, b, a = Graphics.getColor!
@@ -40,6 +45,6 @@ export class Ammo extends GameObject
     for i = 1, love.math.random(4, 6) do @area\addGameObject 'PlayerExplode', @x, @y, {color: @color}
     @area\addGameObject 'ResourceCollectEffect', @x, @y, {
       color: @color, w: @w, h: @h}
-
-    
-    
+      
+  destroy: =>
+      super self

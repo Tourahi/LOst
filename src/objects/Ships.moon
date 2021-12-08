@@ -36,7 +36,7 @@ with Ships
 
       shoot: (p) =>
         d = 1.2*@w
-        p.area\addGameObject 'ShootEff', p.x + 1.2*@w*math.cos(p.r),
+        l = p.area\addGameObject 'ShootEff', p.x + 1.2*@w*math.cos(p.r),
           p.y + 1.2*@w*math.sin(p.r), {player: p, d: d}
         p.area\addGameObject 'Projectile', p.x + 1.5*@w*math.cos(p.r),
           p.y + 1.5*@w*math.sin(p.r), {r: p.r}

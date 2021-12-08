@@ -14,14 +14,12 @@ export class Area
     @gameObjects = {}
 
   update: (dt) =>
-    if Gtimer
-      Gtimer\update dt
-    if @world
-      @world\update dt
+    if Gtimer then Gtimer\update dt
+    if @world then @world\update dt
+
     for i = #@gameObjects, 1, -1
       gameObject = @gameObjects[i]
-      with gameObject
-        \update dt
+      gameObject\update dt
       if gameObject.dead
         gameObject\destroy!
         remove @gameObjects, i
@@ -29,9 +27,9 @@ export class Area
   draw: =>
     table.sort @gameObjects, (a, b) ->
       if a.depth == b.depth then return a.creationTime < b.creationTime
-      else return a.depth < b.depth  
-    for _, gameObject in ipairs @gameObjects
-      gameObject\draw!
+      else return a.depth < b.depth
+    
+    for _, gameObject in ipairs @gameObjects do gameObject\draw!
 
   addGameObject: (gameObjectType, x = 0, y = 0, opts = {}) =>
     gameObject = _G[gameObjectType](self, x, y, opts)

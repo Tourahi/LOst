@@ -40,7 +40,6 @@ with BebopFactory
       if input\pressed 's'
         @offsetFromPlayer = -@offsetFromPlayer
       
-
       projectileHeading = Vector2D(@collider\getLinearVelocity!)\norm! or Vector2D.zero!
       angle = math.atan2 (p.y + @offsetFromPlayer.x) - @y, (p.x + @offsetFromPlayer.y) - @x
       toTargetHeading = Vector2D(math.cos(angle), math.sin(angle))\norm!
@@ -78,6 +77,4 @@ with BebopFactory
         \shake 4, 40, 0.4
       for i = 1, love.math.random(10, 22) do @area\addGameObject 'PlayerExplode', @x, @y
  
-
-
 BebopFactory
