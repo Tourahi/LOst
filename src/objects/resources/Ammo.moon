@@ -17,8 +17,7 @@ export class Ammo extends GameObject
     super dt
 
     if @collider\enter 'Player'
-      object = @collider\getEnterCollisionData('Player').collider\getObject!
-      object.boost = 100
+      @area.room.player\addAmmo 5
       @die!
       
     if @area.room.player
@@ -43,7 +42,7 @@ export class Ammo extends GameObject
   die: =>
     @dead = true
     for i = 1, love.math.random(4, 6) do @area\addGameObject 'PlayerExplode', @x, @y, {color: @color}
-    @area\addGameObject 'ResourceCollectEffect', @x, @y, {
+    @area\addGameObject 'AmmoCollectEffect', @x, @y, {
       color: @color, w: @w, h: @h}
       
   destroy: =>

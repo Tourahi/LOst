@@ -39,6 +39,11 @@ export G_currentRoom = nil
 export Utils = assert require 'src/Utils'
 export Gtimer = Timer!
 
+-- table
+table.random = (t) ->
+  t[love.math.random(1, #t)]
+
+
 export Uid = ->
   f = (x) ->
     r = random(16) - 1

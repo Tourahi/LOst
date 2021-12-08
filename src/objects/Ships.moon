@@ -35,11 +35,13 @@ with Ships
           {parent: self, r: random(2, 4), d: Random(0.15, 0.25), color: player.ship.burnColor}
 
       shoot: (p) =>
-        d = 1.2*@w
-        l = p.area\addGameObject 'ShootEff', p.x + 1.2*@w*math.cos(p.r),
-          p.y + 1.2*@w*math.sin(p.r), {player: p, d: d}
-        p.area\addGameObject 'Projectile', p.x + 1.5*@w*math.cos(p.r),
-          p.y + 1.5*@w*math.sin(p.r), {r: p.r}
+        if p.ammo > 0
+          p.ammo -= 1
+          d = 1.2*@w
+          l = p.area\addGameObject 'ShootEff', p.x + 1.2*@w*math.cos(p.r),
+            p.y + 1.2*@w*math.sin(p.r), {player: p, d: d}
+          p.area\addGameObject 'Projectile', p.x + 1.5*@w*math.cos(p.r),
+            p.y + 1.5*@w*math.sin(p.r), {r: p.r}
     
     }
     

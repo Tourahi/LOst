@@ -32,18 +32,18 @@ export class Player extends GameObject
     @maxHp = 100
     @hp = @maxHp
     
-    @maxAmmo = 100
+    @maxAmmo = 5
     @ammo = @maxAmmo
-    @
+    
 
     @area.GUI.bBar\setColor @ship.boostColor
 
 
-    -- Timers
-    -- @timer\every 0.24, -> 
-    --   @ship\shoot self
-    --   if @bebop
-    --     @bebop\shoot!
+    Timers
+    @timer\every 0.24, -> 
+      @ship\shoot self
+      if @bebop
+        @bebop\shoot!
         
     if opts.glitchEnabled
       @timer\every 5, -> @glitch!
@@ -147,6 +147,9 @@ export class Player extends GameObject
   tailBurn: =>
     @timer\every 0.01, ->
       @ship.burn self
+
+  addAmmo: (amount) =>
+    @ammo = math.min @ammo + amount, @maxAmmo
 
   destroy: =>
     super self

@@ -1,4 +1,4 @@
-export class ResourceCollectEffect extends GameObject
+export class AmmoCollectEffect extends GameObject
   new: (area, x, y, opts) =>
     super area, x, y, opts
     @depth = 100

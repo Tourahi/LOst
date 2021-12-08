@@ -30,7 +30,7 @@ export class Stage
     @area\update dt
 
     if input\down 'f4'
-      @area\addGameObject 'Ammo', Random(0, G_baseW), Random(0, G_baseH),
+      @area\addGameObject 'Boost', Random(0, G_baseW), Random(0, G_baseH),
         {color: Colors.magenta}
       -- Gtimer\after 5, -> o\die!
         
