@@ -7,8 +7,8 @@ export class TextEffect extends GameObject
 
     @w, @h = @font\getWidth(@text), @font\getHeight(@text)
     @characters = {}
-    @bgColor = opts.bgColor or {}
-    @fgColor = opts.fgColor or {}
+    @bgColors = opts.bgColors or {}
+    @fgColors = opts.fgColors or {}
 
     for i = 1, #@text
         table.insert @characters, @text\utf8sub(i ,i)
@@ -17,10 +17,58 @@ export class TextEffect extends GameObject
         if o.__class.__name == 'Ammo' and o.id ~= @id
             return true 
     
+    collidesWithOtherTextEffects = ->
+      for _, text in ipairs allInfoText
+        return Utils.rectOverlapping @x, @y, @x + @w, @y +@h, text.x, text.y, 
+          text.x + text.w, text.y + text.h
 
+    while collidesWithOtherTextEffects!
+      @x = @x + table.random({-1, 0, 1}) *@w
+      @y = @y + table.random({-1, 0, 1}) *@h
 
-    @r = opts.r or random 4, 6
-    @timer\tween opts.d or random(0.3, 0.5), self, {r: 0}, 'linear', -> @dead = true
+    @visible = true
+    @timer\after 0.70, ->
+      @timer\every 0.05, -> @visible = not @visible, 6
+      @timer\after 0.35, -> @visible = true
 
+      @timer\every 0.035, ->
+        randomChars = '0123456789!@#$%¨&*()-=+[]^~/;?><.,|abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWYXZ'
+        for i, char in ipairs @characters
+          if love.math.random(1, 20) <= 1
+            r = love.math.random(1, #randomChars)
+            @characters[i] = randomChars\utf8sub r, r
+          else
+            @characters[i] = char
+
+    @timer\after 1.10, -> @dead = true
+
+          
   update: (dt) =>
     super dt
+
+
+  draw: =>
+    if not @visible then return
+
+    Graphics.setFont @font
+
+    r,g,b,a = Graphics.getColor!
+
+    for i = 1, #@characters
+      width = 0
+      if i > 1
+        for j = 1, i - 1
+          width += @font\getWidth @characters[j]
+
+      if @bgColors[i]
+        Graphics.setColor @bgColors[i]
+        Graphics.rectangle 'fill', @x + @w, @y - @font\getHeight!/2,
+          @font\getWidth(@characters[i]), @font\getHeight! 
+        
+      Graphics.setColor @fgColors[i] or @color or Colors.white
+      Graphics.print @characters[i], @x + width, @y, 0, 1, 1, 0, @font\getHeight!/2
+
+    Graphics.setColor r,g,b,a
+      
+  destroy: =>
+    super self
