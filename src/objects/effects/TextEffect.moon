@@ -7,15 +7,16 @@ export class TextEffect extends GameObject
 
     @w, @h = @font\getWidth(@text), @font\getHeight(@text)
     @characters = {}
-    @bgColors = opts.bgColors or {}
-    @fgColors = opts.fgColors or {}
+    @color = opts.color or Colors.white
+    @bgColors = {}
+    @fgColors = {}
 
     for i = 1, #@text
-        table.insert @characters, @text\utf8sub(i ,i)
+      table.insert @characters, @text\utf8sub(i ,i)
     
     allInfoText = @area\filterGameObjects (o) ->
-        if o.__class.__name == 'Ammo' and o.id ~= @id
-            return true 
+      if o.__class.__name == 'Ammo' and o.id ~= @id
+          return true 
     
     collidesWithOtherTextEffects = ->
       for _, text in ipairs allInfoText
@@ -39,6 +40,16 @@ export class TextEffect extends GameObject
             @characters[i] = randomChars\utf8sub r, r
           else
             @characters[i] = char
+
+          if love.math.random(1, 10) <= 1
+            @bgColors[i] = Utils.randomTableValue(Colors)
+    
+
+          if love.math.random(1, 10) <= 2
+            @fgColors[i] = Utils.randomTableValue(Colors)
+
+
+          
 
     @timer\after 1.10, -> @dead = true
 

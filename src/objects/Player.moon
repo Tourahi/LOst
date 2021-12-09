@@ -42,8 +42,8 @@ export class Player extends GameObject
     Timers
     @timer\every 0.24, -> 
       @ship\shoot self
-      if @bebop
-        @bebop\shoot!
+      -- if @bebop
+      --   @bebop\shoot!
         
     if opts.glitchEnabled
       @timer\every 5, -> @glitch!
@@ -150,6 +150,9 @@ export class Player extends GameObject
 
   addAmmo: (amount) =>
     @ammo = math.min @ammo + amount, @maxAmmo
+
+  addBoost: (amount) =>
+    @boost = math.min @boost + amount, @maxBoost
 
   destroy: =>
     super self

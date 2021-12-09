@@ -4,6 +4,7 @@ export Leak = assert require 'src/libs/Leak'
 export Vector2D = assert require 'src/libs/Vector2D'
 assert require 'src/libs/Colors'
 
+
 import random from love.math
 M = assert require 'moon'
 export Log = assert require 'libs/log/log'
@@ -24,6 +25,7 @@ export fn = assert require 'libs/Moses/moses'
 draft = assert require 'libs/draft/draft'
 export Draft = draft!
 assert require 'libs/MeowCore'
+assert require 'libs/utf8'
 export Flux = MeowC.core.flux
 
 

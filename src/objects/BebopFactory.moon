@@ -20,7 +20,7 @@ with BebopFactory
     B.r = -math.pi / 2
     B.rv = ship.rv
     B.v = 0
-    B.maxV = 90
+    B.maxV = ship.baseV
     B.a = 100
     B.offsetFromPlayer = Vector2D 10, 10
 

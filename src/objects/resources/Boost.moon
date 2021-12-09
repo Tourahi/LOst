@@ -19,7 +19,7 @@ export class Boost extends GameObject
     super dt
 
     if @collider\enter 'Player'
-      @area.room.player\addAmmo 5
+      @area.room.player\addBoost 15
       @die!
       
     @collider\setLinearVelocity @v, 0
@@ -42,6 +42,8 @@ export class Boost extends GameObject
     @area\addGameObject 'BoostCollectEffect', @x, @y, {
       color: @color, w: @w, h: @h}
 
+    @area\addGameObject 'TextEffect', @x + table.random({-1, 1})*@w, @y + table.random({-1, 1})*@h, {
+      color: @color, text: '+1 5   BOOST'}
      
   destroy: =>
     super self

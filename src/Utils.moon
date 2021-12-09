@@ -64,5 +64,11 @@ with Utils
     not (x3 > x2 or x4 < x1 or y3 > y2 or y4 < y1)
 
 
+  .randomTableValue = (t) ->
+    keys = {}
+    for key, value in pairs t do keys[#keys+1] = key
+    i = keys[love.math.random(1, #keys)]
+    t[i]
+
 
 Utils
