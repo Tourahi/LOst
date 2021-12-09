@@ -62,6 +62,13 @@ love.math.clamp = (val, min, max) ->
   if min > max then min, max = max, min
   math.max min, math.min(max, val)
 
+export Fonts = {
+  Basteleur: 'assets/fonts/basteleur/fonts/ttf/Basteleur-Bold.ttf'
+  OuroborosR: 'assets/fonts/ouroboros-master/fonts/Ouroboros-Regular.otf'
+  TricksterM: 'assets/fonts/Trickster-master/fonts/Trickster-Reg.ttf'
+  FTitlesHand: 'assets/fonts/FoundationTitlesHand/FoundationTitlesHand-v0.85.ttf'
+  Connection:  'assets/fonts/connection-iii-font/ConnectionIii-Rj3W.otf'
+}
 
 -- Love vars
 love.slow = 1 -- secs

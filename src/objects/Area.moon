@@ -46,6 +46,13 @@ export class Area
   addPhysicsWorld: =>
     @world = Physics.newWorld 0, 0, true
 
+  filterGameObjects: (filter)=>
+    filtred = {}
+    for _, obj in pairs @gameObjects
+      if filter(obj) then table.insert(filtred, obj)
+    filtred
+    
+
   destroy: =>
     for i = #@gameObject, 1, -1
       gameObj = @gameObjects[i]
