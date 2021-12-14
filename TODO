@@ -22,6 +22,7 @@ Tools Update:
         - skill points
     [x] Drawing order
         - depth
+    [x] Refactoring the bebops factory.
 
 Bugs:
     [x] Projectile sometimes hit the player #1
@@ -35,6 +36,10 @@ Bugs:
 
         
 
+ideas:
+    * Bebop factory should only provide a function that will
+        load the required bebop by name.
+        --> this means seperating the bebops into a seperate folder
 
 
 Notes:

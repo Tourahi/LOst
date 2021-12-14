@@ -1,6 +1,8 @@
-BebopFactory = assert require 'src/objects/BebopFactory'
 
 export class Bebop extends GameObject
+  @factory = {
+    'B1a': assert require 'src/objects/bebops/B1a'
+  }
   new: (area, x, y, opts) =>
     super area, x, y
     ship = opts.ship
@@ -26,7 +28,7 @@ export class Bebop extends GameObject
     @die = ->
 
     -- Set Bebop data
-    BebopFactory[type] self, ship, x, y
+    @@factory[type] self, ship, x, y
 
     @collider = @area.world\newCircleCollider @x, @y, @w
     
